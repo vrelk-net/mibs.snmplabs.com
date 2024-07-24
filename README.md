@@ -10,6 +10,8 @@ All original MIB files are in the 'asn1' directory.
 
 All compiled MIB .py files are in the 'pysnmp' directory.
 
+If you wish to add new MIBs, place them in the '.import' directory, then run `make import`.
+
 # Instructions
 
 ```
@@ -17,8 +19,8 @@ All compiled MIB .py files are in the 'pysnmp' directory.
 pipenv shell
 pipenv install
 
-# Fetching all mibs
-make fetch
+# Import new MIBs
+make import
 
 # Comiling all mibs
 make compile

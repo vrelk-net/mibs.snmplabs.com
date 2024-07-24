@@ -1,10 +1,15 @@
 .DEFAULT_GOAL := help
 
-fetch:  ## Download all mibs from the source
+## Disabled as the site is down. The owner passed away. https://opendev.org/openstack/governance/commit/08f9f4ba5953882730a15481c32cf737b5efca38
+# fetch:  ## Download all mibs from the source
+# 	@# Wget recursive
+# 	wget --recursive --reject-regex 'index.html*' \
+# 	  --no-parent --no-host-directories http://mibs.snmplabs.com/asn1/
+# 	rm -rf asn1/index.html*
+
+import:  ## Move all files in the .import directory to the asn1 directory with the correct name
 	@# Wget recursive
-	wget --recursive --reject-regex 'index.html*' \
-	  --no-parent --no-host-directories http://mibs.snmplabs.com/asn1/
-	rm -rf asn1/index.html*
+	./import-mibs.py
 
 compile:  ## Compile all MIBs into .py files
 	@for f in $$(ls asn1); do \
