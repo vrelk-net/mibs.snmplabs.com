@@ -1,22 +1,16 @@
--- extracted from draft-ietf-ipsec-monitor-mib-02.txt
--- at Mon Nov 15 17:11:29 1999
+IPSEC-SA-MON-MIB DEFINITIONS ::= BEGIN
 
-    IPSEC-SA-MON-MIB DEFINITIONS ::= BEGIN
-
-        IMPORTS
+IMPORTS
             MODULE-IDENTITY, OBJECT-TYPE, Counter32, Gauge32,
             Integer32, Unsigned32, NOTIFICATION-TYPE,
-            OBJECT-IDENTITY, Counter64
-    -- remove this and next line before release
-            , experimental
+            OBJECT-IDENTITY, Counter64, mib-2
                                        FROM SNMPv2-SMI
             TEXTUAL-CONVENTION, TruthValue
                                        FROM SNMPv2-TC
             OBJECT-GROUP, NOTIFICATION-GROUP, MODULE-COMPLIANCE
                                        FROM SNMPv2-CONF
             ifIndex                    FROM IF-MIB
-    -- uncomment next line before release (and remove this one)
-    -- mib-2                           FROM RFC1213-MIB
+    --        mib-2                           FROM RFC1213-MIB
             IpsecDoiIdentType,
             IpsecDoiEncapsulationMode,
             IpsecDoiEspTransform,
@@ -66,10 +60,7 @@
              OID value under experimental tree added.
              Authentication algorithm key length values added."
 
-    -- replace xxx in next line before release and uncomment it
-        --  ::= { mib-2 xxx }
-    -- delete this and next line before release
-            ::= { experimental 98 }
+          ::= { mib-2 500 }
 
 
     IpsecSaCreatorIdent ::= TEXTUAL-CONVENTION

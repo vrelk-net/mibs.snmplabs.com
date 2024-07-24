@@ -34,7 +34,7 @@ ieee8021QBridgeMib MODULE-IDENTITY
         "  WG-URL: http://www.ieee802.org/1/
          WG-EMail: stds-802-1-L@ieee.org
 
-          Contact: IEEE 802.1 Working Group Chair 
+          Contact: IEEE 802.1 Working Group Chair
            Postal: C/O IEEE 802.1 Working Group
                    IEEE Standards Association
                    445 Hoes Lane
@@ -60,9 +60,9 @@ ieee8021QBridgeMib MODULE-IDENTITY
     DESCRIPTION
             "Published as part of IEEE Std 802.1Q-2018.
             Cross references updated and corrected."
-            
+
     REVISION "201412150000Z" -- December 15, 2014
-    
+
     DESCRIPTION
             "Published as part of IEEE Std 802.1Q 2014 revision.
             Cross references updated and corrected.
@@ -71,7 +71,7 @@ ieee8021QBridgeMib MODULE-IDENTITY
             ieee8021QbridgeEgressVidXTable properly reindexed;
             old version deprecated and new version named
             ieee8021QbridgeEgressVidXV2Table."
-            
+
     REVISION     "201112120000Z" -- December 12, 2011
     DESCRIPTION
          "Addition of the VID Translation MIB Subtree for IEEE Std 802.1aq"
@@ -80,7 +80,7 @@ ieee8021QBridgeMib MODULE-IDENTITY
     DESCRIPTION
          "Minor edits to contact information etc. as part of 
           2011 revision of IEEE Std 802.1Q."
-                    
+
     REVISION     "200810150000Z" -- October 15, 2008
     DESCRIPTION
          "Initial version, derived from RFC 4363."
@@ -793,15 +793,15 @@ ieee8021QBridgeStaticUnicastTable OBJECT-TYPE
         into the device by (local or network) management
         specifying the set of ports to which frames received
         from specific ports and containing specific unicast
-        destination addresses are allowed to be forwarded.  
+        destination addresses are allowed to be forwarded.
         Entries are valid for unicast addresses only.
 
         Two modes of operation are supported by this table. When
         the receive port index is non-zero, this table is
         supporting an IEEE 802.1D filtering database as specified in
         14.7.6.1 of IEEE Std 802.1D.  If the receive port is zero,
-        the table is operating as specified in IEEE Std 802.1Q 
-        8.8.1 and 12.7.7.  An agent must at least 
+        the table is operating as specified in IEEE Std 802.1Q
+        8.8.1 and 12.7.7.  An agent must at least
         support the IEEE Std 802.1Q mode of operation."
     REFERENCE   "8.8.1, 12.7.7;
                  IEEE Std 802.1D 7.9.1, 14.7.6.1"
@@ -1124,7 +1124,7 @@ ieee8021QBridgeVlanCurrentEntry OBJECT-TYPE
 Ieee8021QBridgeVlanCurrentEntry ::=
     SEQUENCE {
         ieee8021QBridgeVlanTimeMark
-            TimeFilter,       
+            TimeFilter,
         ieee8021QBridgeVlanCurrentComponentId
             IEEE8021PbbComponentIdentifier,
         ieee8021QBridgeVlanIndex
@@ -1532,7 +1532,7 @@ ieee8021QBridgePortIngressFiltering OBJECT-TYPE
     REFERENCE   "12.10.1.4"
     DEFVAL      { false }
     ::= { ieee8021QBridgePortVlanEntry 3 }
-      
+
 ieee8021QBridgePortMvrpEnabledStatus OBJECT-TYPE
     SYNTAX      TruthValue
     MAX-ACCESS  read-write
@@ -1659,7 +1659,7 @@ ieee8021QBridgeTpVlanPortInFrames OBJECT-TYPE
 ieee8021QBridgeTpVlanPortOutFrames OBJECT-TYPE
     SYNTAX      Counter64
     UNITS      "frames"
-    MAX-ACCESS  read-only     
+    MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
         "The number of valid frames transmitted by this port to
@@ -1894,7 +1894,7 @@ ieee8021QBridgeProtocolGroupEntry OBJECT-TYPE
     INDEX       { ieee8021QBridgeProtocolGroupComponentId,
                   ieee8021QBridgeProtocolTemplateFrameType,
                   ieee8021QBridgeProtocolTemplateProtocolValue }
-    ::= { ieee8021QBridgeProtocolGroupTable 1 }     
+    ::= { ieee8021QBridgeProtocolGroupTable 1 }
 
 Ieee8021QBridgeProtocolGroupEntry ::=
     SEQUENCE {
@@ -2039,14 +2039,14 @@ ieee8021QBridgeProtocolPortRowStatus OBJECT-TYPE
 
 -- =============================================================
 -- ieee8021QBridgeVIDX subtree
--- 
+--
 -- =============================================================
 
 ieee8021QBridgeVIDXTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF Ieee8021QBridgeVIDXEntry
     MAX-ACCESS  not-accessible
     STATUS      current
-    DESCRIPTION       
+    DESCRIPTION
         "This table is used to configure the VID Translation
         Table defined in 12.10.1.8 and 6.9.  The Bridge VID
         Translation Table is used to implement a mapping between a
@@ -2071,7 +2071,7 @@ ieee8021QBridgeVIDXEntry OBJECT-TYPE
             ieee8021QBridgeVIDXLocalVid }
     ::= { ieee8021QBridgeVIDXTable 1 }
 
-Ieee8021QBridgeVIDXEntry ::= 
+Ieee8021QBridgeVIDXEntry ::=
       SEQUENCE {
           ieee8021QBridgeVIDXLocalVid VlanId,
           ieee8021QBridgeVIDXRelayVid VlanId,
@@ -2102,9 +2102,9 @@ ieee8021QBridgeVIDXRowStatus OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "This indicates the status of an entry in this table,
-        and is used to create/delete entries. It is an 
-        implementation specific decision as to whether 
-        any column in this table may be set while the 
+        and is used to create/delete entries. It is an
+        implementation specific decision as to whether
+        any column in this table may be set while the
         corresponding instance of this object is valid(1)."
     REFERENCE   "12.10.1.8.1, 12.10.1.8.2"
     ::= { ieee8021QBridgeVIDXEntry 3 }
@@ -2134,16 +2134,16 @@ ieee8021QBridgeEgressVidXEntry OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      deprecated
     DESCRIPTION
-        "An entry for the Egress VID translation table which includes 
+        "An entry for the Egress VID translation table which includes
         both the relay and local IDs between which the PNP or CNP
         translates."
-       
+
     INDEX { ieee8021BridgeBasePortComponentId,
             ieee8021BridgeBasePort,
             ieee8021QBridgeEgressVidXRelayVid }
     ::= { ieee8021QBridgeEgressVidXTable 1 }
 
-Ieee8021QBridgeEgressVidXEntry ::= 
+Ieee8021QBridgeEgressVidXEntry ::=
       SEQUENCE {
           ieee8021QBridgeEgressVidXRelayVid VlanId,
           ieee8021QBridgeEgressVidXLocalVid VlanId,
@@ -2155,7 +2155,7 @@ ieee8021QBridgeEgressVidXRelayVid OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      deprecated
     DESCRIPTION
-        "The Relay VID after translation transmitted to the 
+        "The Relay VID after translation transmitted to the
          ISS or EISS."
     REFERENCE   "12.10.1.9.1, 12.10.1.9.2"
      ::= { ieee8021QBridgeEgressVidXEntry 1 }
@@ -2165,7 +2165,7 @@ ieee8021QBridgeEgressVidXLocalVid OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      deprecated
     DESCRIPTION
-        "The Local VID before translation transmitted to the 
+        "The Local VID before translation transmitted to the
          ISS or EISS."
     REFERENCE   "12.10.1.9.1, 12.10.1.9.2"
     ::= { ieee8021QBridgeEgressVidXEntry 2 }
@@ -2177,9 +2177,9 @@ ieee8021QBridgeEgressVidXRowStatus OBJECT-TYPE
     STATUS      deprecated
     DESCRIPTION
        "This indicates the status of an entry in this table,
-        and is used to create/delete entries. It is an 
-        implementation specific decision as to whether 
-        any column in this table may be set while the 
+        and is used to create/delete entries. It is an
+        implementation specific decision as to whether
+        any column in this table may be set while the
         corresponding instance of this object is valid(1)."
     REFERENCE   "12.10.1.9.1, 12.10.1.9.2"
    ::= { ieee8021QBridgeEgressVidXEntry 3 }
@@ -2209,16 +2209,16 @@ ieee8021QBridgeEgressVidXV2Entry OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "An entry for the Egress VID translation table which includes 
+        "An entry for the Egress VID translation table which includes
         both the relay and local IDs between which the PNP or CNP
         translates."
-       
+
     INDEX { ieee8021BridgeBasePortComponentId,
             ieee8021BridgeBasePort,
             ieee8021QBridgeEgressVidXV2RelayVid }
     ::= { ieee8021QBridgeEgressVidXV2Table 1 }
 
-Ieee8021QBridgeEgressVidXV2Entry ::= 
+Ieee8021QBridgeEgressVidXV2Entry ::=
       SEQUENCE {
           ieee8021QBridgeEgressVidXV2RelayVid VlanId,
           ieee8021QBridgeEgressVidXV2LocalVid VlanId,
@@ -2230,7 +2230,7 @@ ieee8021QBridgeEgressVidXV2RelayVid OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "The Relay VID after translation transmitted to the 
+        "The Relay VID after translation transmitted to the
          ISS or EISS."
     REFERENCE   "12.10.1.9.1, 12.10.1.9.2"
      ::= { ieee8021QBridgeEgressVidXV2Entry 1 }
@@ -2240,7 +2240,7 @@ ieee8021QBridgeEgressVidXV2LocalVid OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
-        "The Local VID before translation transmitted to the 
+        "The Local VID before translation transmitted to the
          ISS or EISS."
     REFERENCE   "12.10.1.9.1, 12.10.1.9.2"
     ::= { ieee8021QBridgeEgressVidXV2Entry 2 }
@@ -2252,9 +2252,9 @@ ieee8021QBridgeEgressVidXV2RowStatus OBJECT-TYPE
     STATUS      current
     DESCRIPTION
        "This indicates the status of an entry in this table,
-        and is used to create/delete entries. It is an 
-        implementation specific decision as to whether 
-        any column in this table may be set while the 
+        and is used to create/delete entries. It is an
+        implementation specific decision as to whether
+        any column in this table may be set while the
         corresponding instance of this object is valid(1)."
     REFERENCE   "12.10.1.9.1, 12.10.1.9.2"
    ::= { ieee8021QBridgeEgressVidXV2Entry 3 }
@@ -2553,7 +2553,7 @@ ieee8021QBridgeCompliance MODULE-COMPLIANCE
         DESCRIPTION
             "This group is mandatory ONLY for devices supporting
              creation/deletion of customer VLAN ports."
-        
+
         GROUP       ieee8021QBridgeVIDXGroup
         DESCRIPTION
             "This group is mandatory ONLY for devices supporting
@@ -2562,7 +2562,7 @@ ieee8021QBridgeCompliance MODULE-COMPLIANCE
         GROUP       ieee8021QBridgeEgressVIDXGroup
         DESCRIPTION
             "This group is mandatory ONLY for devices supporting
-             separate Ingress and Egress VID translation of 
+             separate Ingress and Egress VID translation of
              of customer and provider VLAN ports."
 
         OBJECT      ieee8021QBridgePortAcceptableFrameTypes
@@ -2656,7 +2656,7 @@ ieee8021QBridgeComplianceV2 MODULE-COMPLIANCE
         DESCRIPTION
             "This group is mandatory ONLY for devices supporting
              creation/deletion of customer VLAN ports."
-        
+
         GROUP       ieee8021QBridgeVIDXGroup
         DESCRIPTION
             "This group is mandatory ONLY for devices supporting
@@ -2665,7 +2665,7 @@ ieee8021QBridgeComplianceV2 MODULE-COMPLIANCE
         GROUP       ieee8021QBridgeEgressVIDXV2Group
         DESCRIPTION
             "This group is mandatory ONLY for devices supporting
-             separate Ingress and Egress VID translation of 
+             separate Ingress and Egress VID translation of
              of customer and provider VLAN ports."
 
         OBJECT      ieee8021QBridgePortAcceptableFrameTypes

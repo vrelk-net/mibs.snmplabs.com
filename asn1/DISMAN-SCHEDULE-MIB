@@ -1,7 +1,3 @@
-
--- WinAgents MIB Extraction Wizard
--- Extracted from rfc3231.txt 16.03.2005 20:21:56
-
 DISMAN-SCHEDULE-MIB DEFINITIONS ::= BEGIN
 
 IMPORTS
@@ -42,7 +38,6 @@ schedMIB MODULE-IDENTITY
                     USA
          EMail:     dlevi@nortelnetworks.com
          Phone:     +1 865 686 0432
-
 
          Editor:    Juergen Schoenwaelder
                     TU Braunschweig
@@ -92,7 +87,6 @@ SnmpPduErrorStatus ::= TEXTUAL-CONVENTION
     SYNTAX      INTEGER {
                     noResponse(-1),
                     noError(0),
-
                     tooBig(1),
                     noSuchName(2),
                     badValue(3),
@@ -239,7 +233,6 @@ schedInterval OBJECT-TYPE
          activations must re-calculate them when this object is
          changed."
     DEFVAL      { 0 }
-
     ::= { schedEntry 4 }
 
 schedWeekDay OBJECT-TYPE
@@ -386,7 +379,6 @@ schedMinute OBJECT-TYPE
     MAX-ACCESS  read-create
     STATUS      current
     DESCRIPTION
-
         "The set of minutes within an hour when the scheduled action
          should take place.
 
@@ -435,7 +427,6 @@ schedValue OBJECT-TYPE
     ::= { schedEntry 12 }
 
 schedType OBJECT-TYPE
-
     SYNTAX      INTEGER {
                     periodic(1),
                     calendar(2),
@@ -582,7 +573,6 @@ schedTriggers OBJECT-TYPE
     SYNTAX      Counter32
     MAX-ACCESS  read-only
     STATUS      current
-
     DESCRIPTION
         "This variable counts the number of attempts (either
          successful or failed) to invoke the scheduled action."
@@ -631,7 +621,6 @@ schedCompliance2 MODULE-COMPLIANCE
          schedCalendarGroup.  Such an implementation must return
          inconsistentValue error responses for attempts to set
          schedAdminStatus to calendar(2) or oneshot(3)."
-
     ::= { schedCompliances 2 }
 
 schedGroup2 OBJECT-GROUP

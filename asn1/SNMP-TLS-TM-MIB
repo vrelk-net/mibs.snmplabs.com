@@ -49,6 +49,7 @@ snmpTlstmMIB MODULE-IDENTITY
     DESCRIPTION  "
         The TLS Transport Model MIB
 
+        (c) Copyright 2017 Hewlett Packard Enterprise Development LP
         Copyright (c) 2010-2011 IETF Trust and the persons identified
         as authors of the code.  All rights reserved.
 

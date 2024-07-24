@@ -14,8 +14,6 @@ transportAddressMIB MODULE-IDENTITY
          Bueltenweg 74/75
          38106 Braunschweig, Germany
 
-
-
          Phone: +49 531 391-3289
          EMail: schoenw@ibr.cs.tu-bs.de
 
@@ -24,6 +22,7 @@ transportAddressMIB MODULE-IDENTITY
         "This MIB module provides commonly used transport
          address definitions.
 
+         (c) Copyright 2017 Hewlett Packard Enterprise Development LP
          Copyright (C) The Internet Society (2002). This version of
          this MIB module is part of RFC 3419; see the RFC itself for
          full legal notices."
@@ -34,7 +33,6 @@ transportAddressMIB MODULE-IDENTITY
     DESCRIPTION
         "Initial version, published as RFC 3419."
     ::= { mib-2 100 }
-
 
 transportDomains OBJECT IDENTIFIER ::= { transportAddressMIB 1 }
 
@@ -64,9 +62,6 @@ transportDomainUdpIpv4z OBJECT-IDENTITY
 
 transportDomainUdpIpv6z OBJECT-IDENTITY
     STATUS      current
-
-
-
     DESCRIPTION
         "The UDP over IPv6 transport domain.  The corresponding
          transport address is of type TransportAddressIPv6z for
@@ -115,9 +110,6 @@ transportDomainSctpIpv4 OBJECT-IDENTITY
          endpoints."
     ::= { transportDomains 9 }
 
-
-
-
 transportDomainSctpIpv6 OBJECT-IDENTITY
     STATUS      current
     DESCRIPTION
@@ -165,9 +157,6 @@ transportDomainUdpDns OBJECT-IDENTITY
          names. The corresponding transport address is of type
          TransportAddressDns."
     ::= { transportDomains 14 }
-
-
-
 
 transportDomainTcpDns OBJECT-IDENTITY
     STATUS      current
@@ -218,8 +207,6 @@ TransportAddressType ::= TEXTUAL-CONVENTION
          tcpIpv6(6)     transportDomainTcpIpv6
          tcpIpv4z(7)    transportDomainTcpIpv4z
 
-
-
          tcpIpv6z(8)    transportDomainTcpIpv6z
          sctpIpv4(9)    transportDomainSctpIpv4
          sctpIpv6(10)   transportDomainSctpIpv6
@@ -269,8 +256,6 @@ TransportAddress ::= TEXTUAL-CONVENTION
          context of a TransportAddressType or TransportDomain value.
          Every usage of the TransportAddress textual convention MUST
 
-
-
          specify the TransportAddressType or TransportDomain object
          which provides the context. Furthermore, MIB authors SHOULD
          define a separate TransportAddressType or TransportDomain
@@ -319,9 +304,6 @@ TransportAddressIPv6 ::= TEXTUAL-CONVENTION
     DESCRIPTION
         "Represents a transport address consisting of an IPv6
          address and a port number (as used for example by UDP,
-
-
-
          TCP and SCTP):
 
           octets       contents         encoding
@@ -371,8 +353,6 @@ TransportAddressIPv6z ::= TEXTUAL-CONVENTION
          This textual convention SHOULD NOT be used directly in object
          definitions since it restricts addresses to a specific format.
 
-
-
          However, if it is used, it MAY be used either on its own or
          in conjunction with TransportAddressType or TransportDomain
          as a pair."
@@ -421,8 +401,6 @@ TransportAddressDns ::= TEXTUAL-CONVENTION
          time of the management operation).
 
          The DESCRIPTION clause of TransportAddress objects that may
-
-
 
          have TransportAddressDns values must fully describe how (and
          when) such names are to be resolved to IP addresses and vice

@@ -38,6 +38,7 @@ IMPORTS
         controlling the use of the ping function at a remote
         host.
 
+        (c) Copyright 2017 Hewlett Packard Enterprise Development LP
         Copyright (C) The Internet Society (2006).  This version of
         this MIB module is part of RFC 4560; see the RFC itself for
         full legal notices."

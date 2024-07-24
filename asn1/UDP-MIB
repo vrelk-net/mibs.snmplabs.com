@@ -32,11 +32,9 @@ udpMIB MODULE-IDENTITY
             Email: <john.flick@hp.com>
 
             Send comments to <ipv6@ietf.org>"
-
-
-
     DESCRIPTION
            "The MIB module for managing UDP implementations.
+            (c) Copyright 2017 Hewlett Packard Enterprise Development LP
             Copyright (C) The Internet Society (2005).  This
             version of this MIB module is part of RFC 4113;
             see the RFC itself for full legal notices."
@@ -81,10 +79,6 @@ udpInDatagrams OBJECT-TYPE
     DESCRIPTION
            "The total number of UDP datagrams delivered to UDP
             users.
-
-
-
-
 
             Discontinuities in the value of this counter can occur
             at re-initialization of the management system, and at
@@ -135,8 +129,6 @@ udpOutDatagrams OBJECT-TYPE
             value of sysUpTime."
     ::= { udp 4 }
 
-
-
 udpHCInDatagrams OBJECT-TYPE
     SYNTAX     Counter64
     MAX-ACCESS read-only
@@ -183,10 +175,6 @@ udpEndpointTable OBJECT-TYPE
            "A table containing information about this entity's UDP
             endpoints on which a local application is currently
             accepting or sending datagrams.
-
-
-
-
 
             The address type in this table represents the address
             type used for the communication, irrespective of the
@@ -236,9 +224,6 @@ udpEndpointEntry OBJECT-TYPE
     SYNTAX     UdpEndpointEntry
     MAX-ACCESS not-accessible
     STATUS     current
-
-
-
     DESCRIPTION
            "Information about a particular current UDP endpoint.
 
@@ -287,8 +272,6 @@ udpEndpointLocalAddress OBJECT-TYPE
            "The local IP address for this UDP endpoint.
 
             The value of this object can be represented in three
-
-
 
             possible ways, depending on the characteristics of the
             listening application:
@@ -339,8 +322,6 @@ udpEndpointRemoteAddressType OBJECT-TYPE
             unknown(0) if datagrams for all remote IP addresses are
             accepted.  Also, note that some combinations of
 
-
-
             udpEndpointLocalAdressType and
             udpEndpointRemoteAddressType are not supported.  In
             particular, if the value of this object is not
@@ -389,9 +370,6 @@ udpEndpointInstance OBJECT-TYPE
             implementing the BSD sockets interface, this would be
             used to support the SO_REUSEADDR and SO_REUSEPORT
             socket options."
-
-
-
     ::= { udpEndpointEntry 7 }
 
 udpEndpointProcess OBJECT-TYPE
@@ -440,8 +418,6 @@ udpEntry OBJECT-TYPE
 UdpEntry ::= SEQUENCE {
     udpLocalAddress   IpAddress,
     udpLocalPort      Integer32
-
-
 
 }
 
@@ -492,8 +468,6 @@ udpMIBCompliance2 MODULE-COMPLIANCE
             --     Support for dns(5) is not required.
             -- OBJECT      udpEndpointLocalAddress
 
-
-
             -- SYNTAX      InetAddress (SIZE(0|4|8|16|20))
             -- DESCRIPTION
             --     Support is only required for zero-length
@@ -542,9 +516,6 @@ udpGroup OBJECT-GROUP
     OBJECTS   { udpInDatagrams, udpNoPorts,
                 udpInErrors, udpOutDatagrams,
                 udpLocalAddress, udpLocalPort }
-
-
-
     STATUS     deprecated
     DESCRIPTION
            "The deprecated group of objects providing for
@@ -577,4 +548,3 @@ udpEndpointGroup OBJECT-GROUP
     ::= { udpMIBGroups 4 }
 
 END
-

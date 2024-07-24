@@ -1,7 +1,3 @@
-
--- WinAgents MIB Extraction Wizard
--- Extracted from rfc3873.txt 17.03.2005 16:20:14
-
 SCTP-MIB DEFINITIONS ::= BEGIN
 
 IMPORTS
@@ -14,10 +10,6 @@ IMPORTS
        FROM SNMPv2-CONF                       -- [RFC2580]
   InetAddressType, InetAddress, InetPortNumber
        FROM INET-ADDRESS-MIB;                 -- [RFC3291]
-
-
-
-
 
 sctpMIB MODULE-IDENTITY
   LAST-UPDATED "200409020000Z"       -- 2nd September 2004
@@ -58,14 +50,13 @@ sctpMIB MODULE-IDENTITY
   DESCRIPTION
        "The MIB module for managing SCTP implementations.
 
+       (c) Copyright 2017 Hewlett Packard Enterprise Development LP
        Copyright (C) The Internet Society (2004).  This version of
        this MIB module is part of RFC 3873; see the RFC itself for
        full legal notices. "
 
   REVISION "200409020000Z"       -- 2nd September 2004
-
   DESCRIPTION " Initial version, published as RFC 3873"
-
   ::= {  mib-2 104 }
 
 -- the SCTP base variables group
@@ -90,9 +81,7 @@ sctpCurrEstab OBJECT-TYPE
   REFERENCE
        "Section 4 in RFC2960 covers the SCTP   Association state
        diagram."
-
   ::= { sctpStats 1 }
-
 
 sctpActiveEstabs OBJECT-TYPE
   SYNTAX         Counter32
@@ -106,16 +95,7 @@ sctpActiveEstabs OBJECT-TYPE
   REFERENCE
        "Section 4 in RFC2960 covers the SCTP   Association state
        diagram."
-
   ::= { sctpStats  2 }
-
-
-
-
-
-
-
-
 
 sctpPassiveEstabs OBJECT-TYPE
   SYNTAX         Counter32
@@ -129,9 +109,7 @@ sctpPassiveEstabs OBJECT-TYPE
   REFERENCE
        "Section 4 in RFC2960 covers the SCTP   Association state
        diagram."
-
   ::= { sctpStats  3 }
-
 
 sctpAborteds OBJECT-TYPE
   SYNTAX         Counter32
@@ -145,9 +123,7 @@ sctpAborteds OBJECT-TYPE
   REFERENCE
        "Section 4 in RFC2960 covers the SCTP   Association state
        diagram."
-
   ::= { sctpStats  4 }
-
 
 sctpShutdowns OBJECT-TYPE
   SYNTAX         Counter32
@@ -161,10 +137,7 @@ sctpShutdowns OBJECT-TYPE
   REFERENCE
        "Section 4 in RFC2960 covers the SCTP   Association state
        diagram."
-
   ::= { sctpStats  5 }
-
-
 
 -- OTHER LAYER STATISTICS
 
@@ -180,7 +153,6 @@ sctpOutOfBlues OBJECT-TYPE
   REFERENCE
        "Section 8.4 in RFC2960 deals with the Out-Of-The-Blue
         (OOTB) packet definition and procedures."
-
   ::= { sctpStats  6 }
 
 sctpChecksumErrors OBJECT-TYPE
@@ -194,7 +166,6 @@ sctpChecksumErrors OBJECT-TYPE
        "The checksum is located at the end of the SCTP packet as per
        Section 3.1 in RFC2960. RFC3309 updates SCTP to use a 32 bit
        CRC checksum."
-
 ::= { sctpStats  7 }
 
 sctpOutCtrlChunks OBJECT-TYPE
@@ -209,11 +180,7 @@ sctpOutCtrlChunks OBJECT-TYPE
        "Sections 1.3.5 and 1.4 in RFC2960 refer to control chunk as
        those chunks different from those that contain user
        information, i.e., DATA chunks."
-
   ::= { sctpStats  8 }
-
-
-
 
 sctpOutOrderChunks OBJECT-TYPE
   SYNTAX         Counter64
@@ -224,7 +191,6 @@ sctpOutOrderChunks OBJECT-TYPE
        are not included)."
   REFERENCE
        "Section 3.3.1 in RFC2960 defines the ordered data chunk."
-
   ::= { sctpStats  9 }
 
 sctpOutUnorderChunks OBJECT-TYPE
@@ -236,7 +202,6 @@ sctpOutUnorderChunks OBJECT-TYPE
        U bit is set to 1) sent (retransmissions are not included)."
   REFERENCE
        "Section 3.3.1 in RFC2960 defines the unordered data chunk."
-
   ::= { sctpStats  10 }
 
 sctpInCtrlChunks OBJECT-TYPE
@@ -250,9 +215,7 @@ sctpInCtrlChunks OBJECT-TYPE
        "Sections 1.3.5 and 1.4 in RFC2960 refer to control chunk as
        those chunks different from those that contain user
        information, i.e., DATA chunks."
-
   ::= { sctpStats  11 }
-
 
 sctpInOrderChunks OBJECT-TYPE
   SYNTAX         Counter64
@@ -261,14 +224,9 @@ sctpInOrderChunks OBJECT-TYPE
   DESCRIPTION
        "The number of SCTP ordered data chunks received (no duplicate
        chunks included)."
-
-
-
   REFERENCE
        "Section 3.3.1 in RFC2960 defines the ordered data chunk."
-
   ::= { sctpStats  12 }
-
 
 sctpInUnorderChunks OBJECT-TYPE
   SYNTAX         Counter64
@@ -279,22 +237,16 @@ sctpInUnorderChunks OBJECT-TYPE
        U bit is set to 1) received (no duplicate chunks included)."
   REFERENCE
        "Section 3.3.1 in RFC2960 defines the unordered data chunk."
-
   ::= { sctpStats  13 }
-
-
 
 sctpFragUsrMsgs OBJECT-TYPE
   SYNTAX         Counter64
   MAX-ACCESS     read-only
   STATUS         current
   DESCRIPTION
-
        "The number of user messages that have to be fragmented
        because of the MTU."
-
   ::= { sctpStats  14 }
-
 
 sctpReasmUsrMsgs OBJECT-TYPE
   SYNTAX         Counter64
@@ -306,12 +258,7 @@ sctpReasmUsrMsgs OBJECT-TYPE
   REFERENCE
        "Section 6.9 in RFC2960 includes a description of the
        reassembly process."
-
   ::= { sctpStats  15 }
-
-
-
-
 
 sctpOutSCTPPacks OBJECT-TYPE
   SYNTAX         Counter64
@@ -320,9 +267,7 @@ sctpOutSCTPPacks OBJECT-TYPE
   DESCRIPTION
        "The number of SCTP packets sent. Retransmitted DATA chunks
        are included."
-
   ::= { sctpStats  16 }
-
 
 sctpInSCTPPacks OBJECT-TYPE
   SYNTAX         Counter64
@@ -331,7 +276,6 @@ sctpInSCTPPacks OBJECT-TYPE
   DESCRIPTION
        "The number of SCTP packets received. Duplicates are
        included."
-
   ::= { sctpStats  17 }
 
 sctpDiscontinuityTime OBJECT-TYPE
@@ -349,9 +293,7 @@ sctpDiscontinuityTime OBJECT-TYPE
        management subsystem, then this object contains a zero value."
   REFERENCE
        "The inclusion of this object is recommended by RFC2578."
-
   ::= { sctpStats 18 }
-
 
 -- PROTOCOL GENERAL VARIABLES
 -- **************************
@@ -361,7 +303,6 @@ sctpRtoAlgorithm OBJECT-TYPE
                       other(1),      -- Other new one. Future use
                       vanj(2)        -- Van Jacobson's algorithm
                  }
-
   MAX-ACCESS     read-only
   STATUS         current
   DESCRIPTION
@@ -371,9 +312,7 @@ sctpRtoAlgorithm OBJECT-TYPE
        "Section 6.3.1 and 6.3.2 in RFC2960 cover the RTO calculation
        and retransmission timer rules."
   DEFVAL {vanj} -- vanj(2)
-
   ::= { sctpParams 1 }
-
 
 sctpRtoMin OBJECT-TYPE
   SYNTAX         Unsigned32
@@ -392,7 +331,6 @@ sctpRtoMin OBJECT-TYPE
        The value of this object has to be lower than or equal to
        stcpRtoMax's value."
   DEFVAL {1000} -- milliseconds
-
   ::= { sctpParams 2 }
 
 sctpRtoMax OBJECT-TYPE
@@ -409,14 +347,10 @@ sctpRtoMax OBJECT-TYPE
        A retransmission time value of zero means immediate re-
        transmission.
 
-
-
        The value of this object has to be greater than or equal to
        stcpRtoMin's value."
   DEFVAL {60000} -- milliseconds
-
     ::= { sctpParams 3 }
-
 
 sctpRtoInitial OBJECT-TYPE
   SYNTAX         Unsigned32
@@ -429,9 +363,7 @@ sctpRtoInitial OBJECT-TYPE
        A retransmission time value of zero means immediate re-
        transmission."
   DEFVAL {3000} -- milliseconds
-
   ::= { sctpParams 4 }
-
 
 sctpMaxAssocs OBJECT-TYPE
   SYNTAX         Integer32 (-1 | 0..2147483647)
@@ -441,14 +373,11 @@ sctpMaxAssocs OBJECT-TYPE
        "The limit on the total number of associations the entity can
        support. In entities where the maximum number of associations
        is dynamic, this object should contain the value -1."
-
   ::= { sctpParams 5 }
-
 
 sctpValCookieLife OBJECT-TYPE
   SYNTAX         Unsigned32
   UNITS          "milliseconds"
-
   MAX-ACCESS     read-only
   STATUS         current
   DESCRIPTION
@@ -457,7 +386,6 @@ sctpValCookieLife OBJECT-TYPE
        "Section 5.1.3 in RFC2960 explains the cookie generation
        process. Recommended value is per section 14 in RFC2960."
   DEFVAL {60000} -- milliseconds
-
   ::= { sctpParams 6 }
 
 sctpMaxInitRetr OBJECT-TYPE
@@ -471,9 +399,7 @@ sctpMaxInitRetr OBJECT-TYPE
        "Section 5.1.4, 5.1.6 in RFC2960 refers to Max.Init.Retransmit
        parameter. Recommended value is per section 14 in RFC2960."
   DEFVAL {8} -- number of attempts
-
   ::= { sctpParams 7 }
-
 
 -- TABLES
 -- ******
@@ -483,31 +409,23 @@ sctpMaxInitRetr OBJECT-TYPE
 -- The SCTP association table contains information about each
 -- association in which the local endpoint is involved.
 
-
 sctpAssocTable OBJECT-TYPE
   SYNTAX         SEQUENCE OF SctpAssocEntry
   MAX-ACCESS     not-accessible
   STATUS         current
   DESCRIPTION
        "A table containing SCTP association-specific information."
-
   ::= { sctpObjects 3 }
-
 
 sctpAssocEntry OBJECT-TYPE
   SYNTAX         SctpAssocEntry
   MAX-ACCESS     not-accessible
-
   STATUS         current
   DESCRIPTION
        "General common variables and statistics for the whole
        association."
   INDEX          { sctpAssocId }
-
   ::= { sctpAssocTable 1 }
-
-
-
 
 SctpAssocEntry ::= SEQUENCE {
   sctpAssocId                        Unsigned32,
@@ -529,7 +447,6 @@ SctpAssocEntry ::= SEQUENCE {
   sctpAssocDiscontinuityTime         TimeStamp
   }
 
-
 sctpAssocId OBJECT-TYPE
   SYNTAX         Unsigned32 (1..4294967295)
   MAX-ACCESS     not-accessible
@@ -537,9 +454,7 @@ sctpAssocId OBJECT-TYPE
   DESCRIPTION
        "Association Identification. Value identifying the
        association. "
-
   ::= { sctpAssocEntry 1 }
-
 
 sctpAssocRemHostName OBJECT-TYPE
   SYNTAX         OCTET STRING (SIZE(0..255))
@@ -557,9 +472,7 @@ sctpAssocRemHostName OBJECT-TYPE
        meaningless. In such cases the object MUST contain a zero-
        length string value. Otherwise, it contains the remote host
        name received at init time."
-
   ::= { sctpAssocEntry 2 }
-
 
 sctpAssocLocalPort OBJECT-TYPE
   SYNTAX         InetPortNumber (1..65535)
@@ -567,9 +480,7 @@ sctpAssocLocalPort OBJECT-TYPE
   STATUS         current
   DESCRIPTION
        "The local SCTP port number used for this association."
-
   ::= { sctpAssocEntry 3 }
-
 
 sctpAssocRemPort OBJECT-TYPE
   SYNTAX         InetPortNumber (1..65535)
@@ -577,9 +488,7 @@ sctpAssocRemPort OBJECT-TYPE
   STATUS         current
   DESCRIPTION
        "The remote SCTP port number used for this association."
-
   ::= { sctpAssocEntry 4 }
-
 
 sctpAssocRemPrimAddrType OBJECT-TYPE
   SYNTAX         InetAddressType
@@ -587,7 +496,6 @@ sctpAssocRemPrimAddrType OBJECT-TYPE
   STATUS         current
   DESCRIPTION
        "The internet type of primary remote IP address. "
-
   ::= { sctpAssocEntry 5 }
 
 sctpAssocRemPrimAddr OBJECT-TYPE
@@ -602,10 +510,7 @@ sctpAssocRemPrimAddr OBJECT-TYPE
        reception, the server side will know this value when sending
        INIT_ACK message. However, values will be filled in at
        established(4) state."
-
   ::= { sctpAssocEntry 6 }
-
-
 
 sctpAssocHeartBeatInterval OBJECT-TYPE
   SYNTAX         Unsigned32
@@ -618,9 +523,7 @@ sctpAssocHeartBeatInterval OBJECT-TYPE
        Zero value means no HeartBeat, even when the concerned
        sctpAssocRemAddrHBFlag object is true."
   DEFVAL {30000} -- milliseconds
-
   ::= { sctpAssocEntry 7 }
-
 
 sctpAssocState OBJECT-TYPE
   SYNTAX         INTEGER {
@@ -653,16 +556,10 @@ sctpAssocState OBJECT-TYPE
        sent from the managed node to the other SCTP endpoint as a
        result of setting the deleteTCB(9) value. The ABORT chunk
        implies an ungraceful association shutdown."
-
-
-
   REFERENCE
-
        "Section 4 in RFC2960 covers the SCTP Association state
        diagram."
-
   ::= { sctpAssocEntry 8 }
-
 
 sctpAssocInStreams OBJECT-TYPE
   SYNTAX         Unsigned32 (1..65535)
@@ -675,7 +572,6 @@ sctpAssocInStreams OBJECT-TYPE
        "Section 1.3 in RFC2960 includes a definition of stream.
        Section 5.1.1 in RFC2960 covers the streams negotiation
        process."
-
   ::= { sctpAssocEntry 9 }
 
 sctpAssocOutStreams OBJECT-TYPE
@@ -689,9 +585,7 @@ sctpAssocOutStreams OBJECT-TYPE
        "Section 1.3 in RFC2960 includes a definition of stream.
        Section 5.1.1 in RFC2960 covers the streams negotiation
        process."
-
   ::= { sctpAssocEntry 10 }
-
 
 sctpAssocMaxRetr OBJECT-TYPE
   SYNTAX         Unsigned32
@@ -707,7 +601,6 @@ sctpAssocMaxRetr OBJECT-TYPE
 
        A value of zero value means no retransmissions."
   DEFVAL {10} -- number of attempts
-
   ::= { sctpAssocEntry 11 }
 
 sctpAssocPrimProcess OBJECT-TYPE
@@ -725,9 +618,7 @@ sctpAssocPrimProcess OBJECT-TYPE
        into the swRunTable of the HOST-RESOURCES-MIB(if the value is
        smaller than 2147483647) or into the sysApplElmtRunTable of
        the SYSAPPL-MIB."
-
   ::= { sctpAssocEntry 12 }
-
 
 -- Association Statistics
 
@@ -746,14 +637,11 @@ sctpAssocT1expireds OBJECT-TYPE
        indicated by the value of sctpAssocDiscontinuityTime."
   REFERENCE
        "Section 5 in RFC2960."
-
-
   ::= { sctpAssocEntry 13 }
 
 sctpAssocT2expireds OBJECT-TYPE
   SYNTAX         Counter32
   MAX-ACCESS     read-only
-
   STATUS         current
   DESCRIPTION
        "The T2 timer determines how long to wait for an
@@ -767,7 +655,6 @@ sctpAssocT2expireds OBJECT-TYPE
 REFERENCE
        "Section 9.2 in RFC2960."
   ::= { sctpAssocEntry 14 }
-
 
 sctpAssocRtxChunks OBJECT-TYPE
   SYNTAX         Counter32
@@ -786,9 +673,7 @@ sctpAssocRtxChunks OBJECT-TYPE
   REFERENCE
        "Section 6 in RFC2960 covers the retransmission process and
        rules."
-
   ::= { sctpAssocEntry 15 }
-
 
 sctpAssocStartTime OBJECT-TYPE
   SYNTAX         TimeStamp
@@ -802,11 +687,9 @@ sctpAssocStartTime OBJECT-TYPE
        - before the association enters the established(4)
          state, or
 
-
        - if the established(4) state was entered prior to
          the last re-initialization of the local network management
          subsystem."
-
   ::= { sctpAssocEntry 16 }
 
 sctpAssocDiscontinuityTime OBJECT-TYPE
@@ -825,7 +708,6 @@ sctpAssocDiscontinuityTime OBJECT-TYPE
        zero value. "
   REFERENCE
        "The inclusion of this object is recommended by RFC2578."
-
   ::= { sctpAssocEntry 17 }
 
 -- Expanded tables: Including Multi-home feature
@@ -841,7 +723,6 @@ sctpAssocLocalAddrTable OBJECT-TYPE
        "Expanded table of sctpAssocTable based on the AssocId index.
        This table shows data related to each local IP address which
        is used by this association."
-
   ::= { sctpObjects  4 }
 
 sctpAssocLocalAddrEntry OBJECT-TYPE
@@ -861,9 +742,7 @@ sctpAssocLocalAddrEntry OBJECT-TYPE
   INDEX     {    sctpAssocId,   -- shared index
                  sctpAssocLocalAddrType,
                  sctpAssocLocalAddr }
-
   ::= { sctpAssocLocalAddrTable 1 }
-
 
 SctpAssocLocalAddrEntry ::= SEQUENCE {
   sctpAssocLocalAddrType        InetAddressType,
@@ -871,15 +750,12 @@ SctpAssocLocalAddrEntry ::= SEQUENCE {
   sctpAssocLocalAddrStartTime   TimeStamp
   }
 
-
 sctpAssocLocalAddrType OBJECT-TYPE
   SYNTAX         InetAddressType
   MAX-ACCESS     not-accessible
   STATUS         current
   DESCRIPTION
        "Internet type of local IP address used for this association."
-
-
   ::= { sctpAssocLocalAddrEntry 1 }
 
 sctpAssocLocalAddr OBJECT-TYPE
@@ -890,16 +766,7 @@ sctpAssocLocalAddr OBJECT-TYPE
        "The value of a local IP address available for this
        association. The type of this address is determined by the
        value of sctpAssocLocalAddrType."
-
   ::= { sctpAssocLocalAddrEntry 2 }
-
-
-
-
-
-
-
-
 
 sctpAssocLocalAddrStartTime OBJECT-TYPE
   SYNTAX         TimeStamp
@@ -908,7 +775,6 @@ sctpAssocLocalAddrStartTime OBJECT-TYPE
   DESCRIPTION
        "The value of sysUpTime at the time that this row was
        created."
-
   ::= { sctpAssocLocalAddrEntry 3 }
 
 -- Remote Addresses TABLE
@@ -922,9 +788,7 @@ sctpAssocRemAddrTable OBJECT-TYPE
        "Expanded table of sctpAssocTable based on the AssocId index.
        This table shows data related to each remote peer IP address
        which is used by this association."
-
   ::= { sctpObjects  5 }
-
 
 sctpAssocRemAddrEntry OBJECT-TYPE
   SYNTAX         SctpAssocRemAddrEntry
@@ -943,12 +807,7 @@ sctpAssocRemAddrEntry OBJECT-TYPE
   INDEX   { sctpAssocId,   -- shared index
             sctpAssocRemAddrType,
             sctpAssocRemAddr }
-
   ::= { sctpAssocRemAddrTable 1 }
-
-
-
-
 
 SctpAssocRemAddrEntry ::= SEQUENCE {
   sctpAssocRemAddrType               InetAddressType,
@@ -961,7 +820,6 @@ SctpAssocRemAddrEntry ::= SEQUENCE {
   sctpAssocRemAddrStartTime          TimeStamp
   }
 
-
 sctpAssocRemAddrType OBJECT-TYPE
   SYNTAX         InetAddressType
   MAX-ACCESS     not-accessible
@@ -971,7 +829,6 @@ sctpAssocRemAddrType OBJECT-TYPE
        association."
   ::= { sctpAssocRemAddrEntry 1 }
 
-
 sctpAssocRemAddr OBJECT-TYPE
   SYNTAX         InetAddress
   MAX-ACCESS     not-accessible
@@ -980,9 +837,7 @@ sctpAssocRemAddr OBJECT-TYPE
        "The value of a remote IP address available for this
        association. The type of this address is determined by the
        value of sctpAssocLocalAddrType."
-
   ::= { sctpAssocRemAddrEntry 2 }
-
 
 sctpAssocRemAddrActive OBJECT-TYPE
   SYNTAX         TruthValue
@@ -996,20 +851,14 @@ sctpAssocRemAddrActive OBJECT-TYPE
        understood as Active. Active means that the threshold of no
        answers received from this IP address has not been reached.
 
-
-
-
        When the object is set to 'false' (2), the remote IP address
        is understood as Inactive. Inactive means that either no
        heartbeat or any other message was received from this address,
        reaching the threshold defined by the protocol."
-
   REFERENCE
        "The remote transport states are defined as Active and
        Inactive in the SCTP, RFC2960."
-
   ::= { sctpAssocRemAddrEntry 3 }
-
 
 sctpAssocRemAddrHBActive OBJECT-TYPE
   SYNTAX         TruthValue
@@ -1019,9 +868,7 @@ sctpAssocRemAddrHBActive OBJECT-TYPE
        "This object indicates whether the optional Heartbeat check
        associated to one destination transport address is activated
        or not (value equal to true or false, respectively). "
-
   ::= { sctpAssocRemAddrEntry 4 }
-
 
 sctpAssocRemAddrRTO OBJECT-TYPE -- T3-rtx- Timer
   SYNTAX         Unsigned32
@@ -1034,9 +881,7 @@ sctpAssocRemAddrRTO OBJECT-TYPE -- T3-rtx- Timer
   REFERENCE
        "Section 6.3 in RFC2960 deals with the Retransmission Timer
        Management."
-
   ::= { sctpAssocRemAddrEntry 5 }
-
 
 sctpAssocRemAddrMaxPathRtx OBJECT-TYPE
   SYNTAX         Unsigned32
@@ -1046,14 +891,10 @@ sctpAssocRemAddrMaxPathRtx OBJECT-TYPE
        "Maximum number of DATA chunks retransmissions allowed to a
        remote IP address before it is considered inactive, as defined
        in RFC2960."
-
-
   REFERENCE
        "Section 8.2, 8.3 and 14 in RFC2960."
   DEFVAL {5} -- number of attempts
-
   ::= { sctpAssocRemAddrEntry 6 }
-
 
 -- Remote Address Statistic
 
@@ -1072,7 +913,6 @@ sctpAssocRemAddrRtx OBJECT-TYPE
        Discontinuities in the value of this counter can occur at re-
        initialization of the management system, and at other times as
        indicated by the value of sctpAssocDiscontinuityTime."
-
   ::= { sctpAssocRemAddrEntry 7 }
 
 sctpAssocRemAddrStartTime OBJECT-TYPE
@@ -1082,7 +922,6 @@ sctpAssocRemAddrStartTime OBJECT-TYPE
   DESCRIPTION
        "The value of sysUpTime at the time that this row was
        created."
-
   ::= { sctpAssocRemAddrEntry 8 }
 
 -- ASSOCIATION INVERSE TABLE
@@ -1098,9 +937,7 @@ sctpLookupLocalPortTable OBJECT-TYPE
        "With the use of this table, a list of associations which are
 
        using the specified local port can be retrieved."
-
   ::= { sctpObjects  6 }
-
 
 sctpLookupLocalPortEntry OBJECT-TYPE
   SYNTAX         SctpLookupLocalPortEntry
@@ -1110,17 +947,13 @@ sctpLookupLocalPortEntry OBJECT-TYPE
        "This table is indexed by local port and association ID.
        Specifying a local port, we would get a list of the
        associations whose local port is the one specified."
-
   INDEX         { sctpAssocLocalPort,
                  sctpAssocId }
-
   ::= { sctpLookupLocalPortTable 1 }
-
 
 SctpLookupLocalPortEntry::= SEQUENCE {
   sctpLookupLocalPortStartTime            TimeStamp
   }
-
 
 sctpLookupLocalPortStartTime OBJECT-TYPE
   SYNTAX         TimeStamp
@@ -1132,7 +965,6 @@ sctpLookupLocalPortStartTime OBJECT-TYPE
        As the table will be created after the sctpAssocTable
        creation, this value could be equal to the sctpAssocStartTime
        object from the main table."
-
   ::= { sctpLookupLocalPortEntry 1 }
 
 -- BY REMOTE PORT
@@ -1141,15 +973,9 @@ sctpLookupRemPortTable OBJECT-TYPE
   SYNTAX         SEQUENCE OF SctpLookupRemPortEntry
   MAX-ACCESS     not-accessible
   STATUS         current
-
-
-
-
-
   DESCRIPTION
        "With the use of this table, a list of associations which are
        using the specified remote port can be got"
-
   ::= { sctpObjects  7 }
 
 sctpLookupRemPortEntry OBJECT-TYPE
@@ -1160,16 +986,13 @@ sctpLookupRemPortEntry OBJECT-TYPE
        "This table is indexed by remote port and association ID.
        Specifying a remote port we would get a list of the
        associations whose local port is the one specified "
-
   INDEX         { sctpAssocRemPort,
                  sctpAssocId }
-
   ::= { sctpLookupRemPortTable 1 }
 
 SctpLookupRemPortEntry::= SEQUENCE {
   sctpLookupRemPortStartTime              TimeStamp
   }
-
 
 sctpLookupRemPortStartTime OBJECT-TYPE
   SYNTAX         TimeStamp
@@ -1181,7 +1004,6 @@ sctpLookupRemPortStartTime OBJECT-TYPE
        As the table will be created after the sctpAssocTable
        creation, this value could be equal to the sctpAssocStartTime
        object from the main table."
-
   ::= { sctpLookupRemPortEntry 1 }
 
 -- BY REMOTE HOST NAME
@@ -1193,10 +1015,7 @@ sctpLookupRemHostNameTable OBJECT-TYPE
   DESCRIPTION
        "With the use of this table, a list of associations with that
        particular host can be retrieved."
-
-
   ::= { sctpObjects  8 }
-
 
 sctpLookupRemHostNameEntry OBJECT-TYPE
   SYNTAX         SctpLookupRemHostNameEntry
@@ -1212,12 +1031,9 @@ sctpLookupRemHostNameEntry OBJECT-TYPE
        instances in this table will have more than 128 sub-
        identifiers and cannot be accessed using SNMPv1, SNMPv2c, or
        SNMPv3."
-
   INDEX         { sctpAssocRemHostName,
                  sctpAssocId }
-
   ::= { sctpLookupRemHostNameTable 1 }
-
 
 SctpLookupRemHostNameEntry::= SEQUENCE {
   sctpLookupRemHostNameStartTime               TimeStamp
@@ -1233,16 +1049,7 @@ sctpLookupRemHostNameStartTime OBJECT-TYPE
        As the table will be created after the sctpAssocTable
        creation, this value could be equal to the sctpAssocStartTime
        object from the main table."
-
   ::= { sctpLookupRemHostNameEntry 1 }
-
-
-
-
-
-
-
-
 
 -- BY REMOTE PRIMARY IP ADDRESS
 
@@ -1254,9 +1061,7 @@ sctpLookupRemPrimIPAddrTable OBJECT-TYPE
        "With the use of this table, a list of associations that have
        the specified IP address as primary within the remote set of
        active addresses can be retrieved."
-
   ::= { sctpObjects  9 }
-
 
 sctpLookupRemPrimIPAddrEntry OBJECT-TYPE
   SYNTAX         SctpLookupRemPrimIPAddrEntry
@@ -1272,36 +1077,26 @@ sctpLookupRemPrimIPAddrEntry OBJECT-TYPE
        instances in this table will have more than 128 sub-
        identifiers and cannot be accessed using SNMPv1, SNMPv2c, or
        SNMPv3."
-
   INDEX         { sctpAssocRemPrimAddrType,
                  sctpAssocRemPrimAddr,
                  sctpAssocId }
-
   ::= { sctpLookupRemPrimIPAddrTable 1 }
 
 SctpLookupRemPrimIPAddrEntry::= SEQUENCE {
   sctpLookupRemPrimIPAddrStartTime             TimeStamp
   }
 
-
 sctpLookupRemPrimIPAddrStartTime OBJECT-TYPE
   SYNTAX         TimeStamp
   MAX-ACCESS     read-only
   STATUS         current
-
-
-
-
-
   DESCRIPTION
        "The value of SysUpTime at the time that this row was created.
 
        As the table will be created after the sctpAssocTable
        creation, this value could be equal to the sctpAssocStartTime
        object from the main table."
-
   ::= { sctpLookupRemPrimIPAddrEntry 1 }
-
 
 -- BY REMOTE IP ADDRESS
 
@@ -1313,9 +1108,7 @@ sctpLookupRemIPAddrTable OBJECT-TYPE
        "With the use of this table, a list of associations that have
        the specified IP address as one of the remote ones can be
        retrieved. "
-
   ::= { sctpObjects  10 }
-
 
 sctpLookupRemIPAddrEntry OBJECT-TYPE
   SYNTAX         SctpLookupRemIPAddrEntry
@@ -1326,21 +1119,15 @@ sctpLookupRemIPAddrEntry OBJECT-TYPE
        ID. Specifying an IP address we would get a list of the
        associations that have the specified IP address included
        within the set of remote IP addresses."
-
   INDEX         { sctpAssocRemAddrType,
                  sctpAssocRemAddr,
                  sctpAssocId }
-
   ::= { sctpLookupRemIPAddrTable 1 }
-
 
 SctpLookupRemIPAddrEntry::= SEQUENCE {
 
   sctpLookupRemIPAddrStartTime            TimeStamp
   }
-
-
-
 
 sctpLookupRemIPAddrStartTime OBJECT-TYPE
   SYNTAX         TimeStamp
@@ -1352,16 +1139,13 @@ sctpLookupRemIPAddrStartTime OBJECT-TYPE
        As the table will be created after the sctpAssocTable
        creation, this value could be equal to the sctpAssocStartTime
        object from the main table."
-
   ::= { sctpLookupRemIPAddrEntry 1 }
-
 
 -- 4.1 Conformance Information
 
 sctpMibConformance    OBJECT IDENTIFIER ::= { sctpMIB 2 }
 sctpMibCompliances    OBJECT IDENTIFIER ::= { sctpMibConformance 1 }
 sctpMibGroups         OBJECT IDENTIFIER ::= { sctpMibConformance 2 }
-
 
 -- 4.1.1 Units of conformance
 
@@ -1378,18 +1162,12 @@ sctpLayerParamsGroup OBJECT-GROUP
               sctpValCookieLife,
               sctpMaxInitRetr
             }
-
   STATUS    current
   DESCRIPTION
        "Common parameters for the SCTP layer, i.e., for all the
        associations. They can usually be referred to as configuration
        parameters."
-
   ::= { sctpMibGroups 1 }
-
-
-
-
 
 sctpStatsGroup OBJECT-GROUP
   OBJECTS   { sctpCurrEstab,
@@ -1415,15 +1193,12 @@ sctpStatsGroup OBJECT-GROUP
               sctpAssocRtxChunks,
               sctpAssocRemAddrRtx
             }
-
   STATUS    current
   DESCRIPTION
        "Statistics group. It includes the objects to collect state
        changes in the SCTP protocol local layer and flow control
        statistics."
-
   ::= { sctpMibGroups 2 }
-
 
 sctpPerAssocParamsGroup OBJECT-GROUP
   OBJECTS   { sctpAssocRemHostName,
@@ -1439,7 +1214,6 @@ sctpPerAssocParamsGroup OBJECT-GROUP
               sctpAssocPrimProcess,
               sctpAssocStartTime,
               sctpAssocDiscontinuityTime,
-
               sctpAssocLocalAddrStartTime,
               sctpAssocRemAddrActive,
               sctpAssocRemAddrHBActive,
@@ -1447,13 +1221,11 @@ sctpPerAssocParamsGroup OBJECT-GROUP
               sctpAssocRemAddrMaxPathRtx,
               sctpAssocRemAddrStartTime
             }
-
   STATUS    current
   DESCRIPTION
        "The SCTP group of objects to manage per-association
        parameters. These variables include all the SCTP basic
        features."
-
   ::= { sctpMibGroups 3 }
 
 sctpPerAssocStatsGroup OBJECT-GROUP
@@ -1463,12 +1235,10 @@ sctpPerAssocStatsGroup OBJECT-GROUP
               sctpAssocRtxChunks,
               sctpAssocRemAddrRtx
             }
-
   STATUS    current
   DESCRIPTION
        "Per Association Statistics group. It includes the objects to
        collect flow control statistics per association."
-
   ::= { sctpMibGroups 4 }
 
 sctpInverseGroup OBJECT-GROUP
@@ -1478,16 +1248,10 @@ sctpInverseGroup OBJECT-GROUP
              sctpLookupRemPrimIPAddrStartTime,
              sctpLookupRemIPAddrStartTime
             }
-
   STATUS    current
   DESCRIPTION
        "Objects used in the inverse lookup tables."
-
   ::= { sctpMibGroups 5 }
-
-
-
-
 
 -- 4.1.2 Compliance Statements
 
@@ -1561,7 +1325,6 @@ sctpMibCompliance MODULE-COMPLIANCE
             "An implementation is only required to support globally
             unique IPv4 and globally unique IPv6 addresses."
 
-
        OBJECT sctpAssocState
        WRITE-SYNTAX  INTEGER { deleteTCB(9) }
        MIN-ACCESS read-only
@@ -1575,7 +1338,6 @@ sctpMibCompliance MODULE-COMPLIANCE
             "Objects used in inverse lookup tables. This should be
             implemented, at the discretion of the implementers, for
             easier lookups in the association tables"
-
   ::= { sctpMibCompliances 1 }
 
 END

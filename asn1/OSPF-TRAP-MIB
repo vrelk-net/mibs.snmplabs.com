@@ -1,5 +1,5 @@
 OSPF-TRAP-MIB DEFINITIONS ::= BEGIN
-
+ 
 IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE, IpAddress
                  FROM SNMPv2-SMI
@@ -17,44 +17,47 @@ IMPORTS
     ospfNbrRestartHelperExitReason, ospfVirtNbrRestartHelperStatus,
     ospfVirtNbrRestartHelperAge, ospfVirtNbrRestartHelperExitReason
                  FROM OSPF-MIB;
-
+ 
   ospfTrap MODULE-IDENTITY
-
+ 
        LAST-UPDATED "200611100000Z" -- November 10, 2006 00:00:00 EST
        ORGANIZATION "IETF OSPF Working Group"
        CONTACT-INFO
        "WG E-Mail: ospf@ietf.org
-
+ 
         WG Chairs: acee@cisco.com
                    rohit@gmail.com
-
+ 
         Editors:   Dan Joyal
                    Nortel
                    600 Technology Park Drive
                    Billerica, MA  01821
                    djoyal@nortel.com
-
+ 
                    Piotr Galecki
                    Airvana
                    19 Alpha Road
                    Chelmsford, MA 01824
                    pgalecki@airvana.com
-
+ 
                    Spencer Giacalone
                    CSFB
                    Eleven Madison Ave
                    New York, NY 10010-3629
-
+ 
+ 
                    spencer.giacalone@gmail.com"
+ 
        DESCRIPTION
           "The MIB module to describe traps for the OSPF
           Version 2 Protocol.
-
+ 
+          (c) Copyright 2017 Hewlett Packard Enterprise Development LP
           Copyright (C) The IETF Trust (2006).
           This version of this MIB module is part of
           RFC 4750;  see the RFC itself for full legal
           notices."
-
+ 
        REVISION "200611100000Z" -- November 10, 2006 00:00:00 EST
        DESCRIPTION
           "Updated for latest changes to OSPFv2:
@@ -62,22 +65,23 @@ IMPORTS
            -added new config error types
            -added ospfNssaTranslatorStatusChange trap.
            See Appendix B of RFC 4750 for more details.
-
+ 
           This version published as part of RFC 4750"
-
+ 
        REVISION "199501201225Z" -- Fri Jan 20 12:25:50 PST 1995
        DESCRIPTION
           "The initial SMIv2 revision of this MIB module, published
           in RFC 1850."
+ 
        ::= { ospf 16 }
-
+ 
 --  Trap Support Objects
-
+ 
 --  The following are support objects for the OSPF traps.
-
+ 
   ospfTrapControl OBJECT IDENTIFIER ::= { ospfTrap 1 }
   ospfTraps OBJECT IDENTIFIER ::= { ospfTrap 2 }
-
+ 
   ospfSetTrap OBJECT-TYPE
        SYNTAX       OCTET STRING (SIZE(4))
        MAX-ACCESS   read-write
@@ -89,13 +93,15 @@ IMPORTS
           OSPF traps where a 1 in the bit field
           represents enabled.  The right-most bit (least
           significant) represents trap 0.
-
+ 
           This object is persistent and when written
-
+ 
+ 
+ 
           the entity SHOULD save the change to non-volatile
           storage."
         ::= { ospfTrapControl 1 }
-
+ 
   ospfConfigErrorType OBJECT-TYPE
        SYNTAX       INTEGER {
                        badVersion (1),
@@ -122,7 +128,7 @@ IMPORTS
           pertaining to this object should be returned as
           noError."
        ::= { ospfTrapControl 2 }
-
+ 
   ospfPacketType OBJECT-TYPE
        SYNTAX       INTEGER {
                        hello (1),
@@ -139,7 +145,10 @@ IMPORTS
           that type have been sent, this value pertaining
           to this object should be returned as nullPacket."
        ::= { ospfTrapControl 3 }
-
+ 
+ 
+ 
+ 
   ospfPacketSrc OBJECT-TYPE
        SYNTAX       IpAddress
        MAX-ACCESS   read-only
@@ -152,9 +161,9 @@ IMPORTS
           this value pertaining to this object should
           be returned as 0.0.0.0."
        ::= { ospfTrapControl 4 }
-
+ 
 --  Traps
-
+ 
   ospfVirtIfStateChange NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfVirtIfAreaId,
@@ -166,13 +175,13 @@ IMPORTS
           "An ospfVirtIfStateChange trap signifies that there
           has been a change in the state of an OSPF virtual
           interface.
-
+ 
           This trap should be generated when the interface
           state regresses (e.g., goes from Point-to-Point to Down)
           or progresses to a terminal state
           (i.e., Point-to-Point)."
        ::= { ospfTraps 1 }
-
+ 
   ospfNbrStateChange NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfNbrIpAddr,
@@ -188,6 +197,9 @@ IMPORTS
           generated when the neighbor state regresses
           (e.g., goes from Attempt or Full to 1-Way or
           Down) or progresses to a terminal state (e.g.,
+ 
+ 
+ 
           2-Way or Full).  When an neighbor transitions
           from or to Full on non-broadcast multi-access
           and broadcast networks, the trap should be
@@ -195,7 +207,7 @@ IMPORTS
           router transitioning to Down will be noted by
           ospfIfStateChange."
        ::= { ospfTraps 2 }
-
+ 
   ospfVirtNbrStateChange NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfVirtNbrArea,
@@ -211,7 +223,7 @@ IMPORTS
           from Attempt or Full to 1-Way or Down) or
           progresses to a terminal state (e.g., Full)."
        ::= { ospfTraps 3 }
-
+ 
   ospfIfConfigError NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfIfIpAddress,
@@ -230,13 +242,15 @@ IMPORTS
           optionMismatch should cause a trap only if it
           prevents an adjacency from forming."
        ::= { ospfTraps 4 }
-
+ 
   ospfVirtIfConfigError NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfVirtIfAreaId,
           ospfVirtIfNeighbor,
           ospfConfigErrorType, -- Type of error
-
+ 
+ 
+ 
           ospfPacketType
           }
        STATUS       current
@@ -249,7 +263,7 @@ IMPORTS
           should cause a trap only if it prevents an
           adjacency from forming."
        ::= { ospfTraps 5 }
-
+ 
   ospfIfAuthFailure NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfIfIpAddress,
@@ -268,7 +282,7 @@ IMPORTS
           router's authentication key or authentication
           type."
        ::= { ospfTraps 6 }
-
+ 
   ospfVirtIfAuthFailure NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfVirtIfAreaId,
@@ -284,8 +298,12 @@ IMPORTS
           from a router whose authentication key or
           authentication type conflicts with this router's
           authentication key or authentication type."
+ 
+ 
+ 
+ 
        ::= { ospfTraps 7 }
-
+ 
   ospfIfRxBadPacket NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfIfIpAddress,
@@ -299,7 +317,7 @@ IMPORTS
           OSPF packet has been received on a non-virtual
           interface that cannot be parsed."
        ::= { ospfTraps 8 }
-
+ 
   ospfVirtIfRxBadPacket NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
          ospfVirtIfAreaId,
@@ -312,7 +330,7 @@ IMPORTS
           packet has been received on a virtual interface
           that cannot be parsed."
        ::= { ospfTraps 9 }
-
+ 
   ospfTxRetransmit NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfIfIpAddress,
@@ -332,7 +350,9 @@ IMPORTS
            The LS type, LS ID, and Router ID are used to
            identify the LSDB entry."
         ::= { ospfTraps 10 }
-
+ 
+ 
+ 
   ospfVirtIfTxRetransmit NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfVirtIfAreaId,
@@ -351,7 +371,7 @@ IMPORTS
           type, LS ID, and Router ID are used to identify
           the LSDB entry."
        ::= { ospfTraps 11 }
-
+ 
   ospfOriginateLsa NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfLsdbAreaId,  -- 0.0.0.0 for AS Externals
@@ -371,7 +391,7 @@ IMPORTS
           are being flushed because they have reached
           MaxAge."
        ::= { ospfTraps 12 }
-
+ 
   ospfMaxAgeLsa NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfLsdbAreaId,  -- 0.0.0.0 for AS Externals
@@ -381,22 +401,26 @@ IMPORTS
           }
        STATUS       current
        DESCRIPTION
+ 
+ 
+ 
           "An ospfMaxAgeLsa trap signifies that one of
           the LSAs in the router's link state database has
           aged to MaxAge."
        ::= { ospfTraps 13 }
-
+ 
   ospfLsdbOverflow NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfExtLsdbLimit
           }
+ 
        STATUS       current
        DESCRIPTION
           "An ospfLsdbOverflow trap signifies that the
           number of LSAs in the router's link state
           database has exceeded ospfExtLsdbLimit."
        ::= { ospfTraps 14 }
-
+ 
   ospfLsdbApproachingOverflow NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfExtLsdbLimit
@@ -408,7 +432,7 @@ IMPORTS
           link state database has exceeded ninety percent of
           ospfExtLsdbLimit."
        ::= { ospfTraps 15 }
-
+ 
   ospfIfStateChange NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
           ospfIfIpAddress,
@@ -425,10 +449,12 @@ IMPORTS
           state (i.e., Point-to-Point, DR Other, Dr, or
           Backup)."
        ::= { ospfTraps 16 }
-
+ 
   ospfNssaTranslatorStatusChange NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
-
+ 
+ 
+ 
           ospfAreaId,
           ospfAreaNssaTranslatorState -- The current translation
                                       -- status
@@ -442,7 +468,7 @@ IMPORTS
           status transitions from or to any defined status on
           a per-area basis."
        ::= { ospfTraps 17 }
-
+ 
   ospfRestartStatusChange NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
                  ospfRestartStatus,
@@ -457,7 +483,7 @@ IMPORTS
           generated when the router restart status
           changes."
        ::= { ospfTraps 18 }
-
+ 
   ospfNbrRestartHelperStatusChange NOTIFICATION-TYPE
        OBJECTS { ospfRouterId, -- The originator of the trap
                  ospfNbrIpAddr,
@@ -475,9 +501,11 @@ IMPORTS
           generated when the neighbor restart helper status
           transitions for a neighbor."
        ::= { ospfTraps 19 }
-
+ 
   ospfVirtNbrRestartHelperStatusChange NOTIFICATION-TYPE
-
+ 
+ 
+ 
        OBJECTS { ospfRouterId, -- The originator of the trap
                  ospfVirtNbrArea,
                  ospfVirtNbrRtrId,
@@ -493,28 +521,28 @@ IMPORTS
           be generated when the virtual neighbor restart helper
           status transitions for a virtual neighbor."
        ::= { ospfTraps 20 }
-
+ 
 --  conformance information
-
+ 
 ospfTrapConformance OBJECT IDENTIFIER ::= { ospfTrap 3 }
 ospfTrapGroups      OBJECT IDENTIFIER ::= { ospfTrapConformance 1 }
 ospfTrapCompliances OBJECT IDENTIFIER ::= { ospfTrapConformance 2 }
-
+ 
 --  compliance statements
-
+ 
 ospfTrapCompliance MODULE-COMPLIANCE
      STATUS       obsolete
      DESCRIPTION
         "The compliance statement."
      MODULE       -- this module
      MANDATORY-GROUPS { ospfTrapControlGroup }
-
+ 
      GROUP       ospfTrapControlGroup
      DESCRIPTION
         "This group is optional but recommended for all
         OSPF systems."
      ::= { ospfTrapCompliances 1 }
-
+ 
 ospfTrapCompliance2 MODULE-COMPLIANCE
      STATUS       current
      DESCRIPTION
@@ -526,7 +554,9 @@ ospfTrapCompliance2 MODULE-COMPLIANCE
      DESCRIPTION
         "This object is only required to be supplied within
         notifications."
-
+ 
+ 
+ 
      OBJECT       ospfPacketType
      MIN-ACCESS   accessible-for-notify
      DESCRIPTION
@@ -538,9 +568,9 @@ ospfTrapCompliance2 MODULE-COMPLIANCE
         "This object is only required to be supplied within
         notifications."
      ::= { ospfTrapCompliances 2 }
-
+ 
 --  units of conformance
-
+ 
   ospfTrapControlGroup    OBJECT-GROUP
        OBJECTS { ospfSetTrap,
                  ospfConfigErrorType,
@@ -551,7 +581,7 @@ ospfTrapCompliance2 MODULE-COMPLIANCE
           "These objects are required to control traps
           from OSPF systems."
        ::= { ospfTrapGroups 1 }
-
+ 
   ospfTrapEventGroup       NOTIFICATION-GROUP
        NOTIFICATIONS {
           ospfVirtIfStateChange,
@@ -575,10 +605,14 @@ ospfTrapCompliance2 MODULE-COMPLIANCE
           ospfNbrRestartHelperStatusChange,
           ospfVirtNbrRestartHelperStatusChange
           }
+ 
+ 
+ 
        STATUS        current
        DESCRIPTION
           "A grouping of OSPF trap events, as specified
           in NOTIFICATION-TYPE constructs."
        ::= { ospfTrapGroups 2 }
-
+ 
 END
+ 

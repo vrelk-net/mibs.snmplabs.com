@@ -90,6 +90,7 @@ qBridgeMIB MODULE-IDENTITY
         IEEE 802.1u-2001 and Vlan Classification defined by
         IEEE 802.1v-2001.
 
+        (c) Copyright 2017 Hewlett Packard Enterprise Development LP
         Copyright (C) The Internet Society (2006).  This version of
         this MIB module is part of RFC 4363; See the RFC itself for
         full legal notices."

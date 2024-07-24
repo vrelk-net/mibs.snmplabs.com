@@ -67,6 +67,7 @@ snmpProxyMIB MODULE-IDENTITY
          mechanisms to remotely configure the parameters
          used by a proxy forwarding application.
 
+         (c) Copyright 2017 Hewlett Packard Enterprise Development LP
          Copyright (C) The Internet Society (2002). This
          version of this MIB module is part of RFC 3413;
          see the RFC itself for full legal notices.

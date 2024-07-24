@@ -1,49 +1,8 @@
--- Changes for RFC1271 (RMON MIB):
---      Changed RFC1158-MIB to RFC1213-MIB
---      Added import for TimeTicks.
---      Changed syntax of etherStatsStatus from INTEGER to
---          EntryStatus in sequence EtherStatsEntry.
---      Changed syntax of historyControlStatus from INTEGER to
---          EntryStatus in sequence HistoryControlEntry.
---      Changed range of alarmRisingEventIndex in definition
---          of sequence AlarmEntry to match object
---          definition.
---      Changed range of alarmFallingEventIndex in definition
---          of sequence AlarmEntry to match object
---          definition.
---      Changed syntax of alarmStatus from INTEGER to
---          EntryStatus in sequence AlarmEntry.
---      Changed syntax of hostControlStatus from INTEGER to
---          EntryStatus in sequence HostControlEntry.
---      Changed syntax of hostTopNStatus from INTEGER to
---          EntryStatus in sequence HistoryHostTopNControlEntry.
---      Changed syntax of maxtrixControlStatus from INTEGER to
---          EntryStatus in sequence MatrixControlEntry.
---      Changed syntax of filterStatus from INTEGER to
---          EntryStatus in sequence FilterEntry.
---      Changed syntax of channelStatus from INTEGER to
---          EntryStatus in sequence ChannelEntry.
---      Changed syntax of bufferControlStatus from INTEGER to
---          EntryStatus in sequence bufferControlEntry.
---      Changed syntax of eventStatus from INTEGER to
---          EntryStatus in sequence EventEntry.
---      Added import for TRAP-TYPE macro.
---      Added risingAlarm trap definition from RMON draft mib
---          draft-ietf-rmonmib-rmonmib-02.txt
---      Added fallingAlarm trap definition from RMON draft mib
---          draft-ietf-rmonmib-rmonmib-02.txt
-
-
           RFC1271-MIB DEFINITIONS ::= BEGIN
 
-          -- RFC1271
-          -- November 91
-
               IMPORTS
-                  Counter, TimeTicks                   FROM RFC1155-SMI
-                  DisplayString, mib-2                 FROM RFC1213-MIB
-                  TRAP-TYPE                            FROM RFC-1215
-                  OBJECT-TYPE                          FROM RFC-1212;
+                  Counter, OBJECT-TYPE                 FROM RFC1155-SMI
+                  mib-2, DisplayString                 FROM RFC1213-MIB;
 
           --  This MIB module uses the extended OBJECT-TYPE macro as
           --  defined in [9].
@@ -67,6 +26,7 @@
               -- In some cases the agent itself will be the owner of
               -- an entry.  In these cases, this string shall be set
               -- to a string starting with 'monitor'.
+
               --
               -- SNMP access control is articulated entirely in terms of
               -- the contents of MIB views; access to a particular SNMP
@@ -115,6 +75,7 @@
               -- underCreation(3).
               --
               -- Entries shall exist in the underCreation(3) state until
+
               -- the management station is finished configuring the
               -- entry and sets this object to valid(1) or aborts,
               -- setting this object to invalid(4).  If the agent
@@ -194,7 +155,7 @@
               etherStatsPkts512to1023Octets      Counter,
               etherStatsPkts1024to1518Octets     Counter,
               etherStatsOwner                    OwnerString,
-              etherStatsStatus                   EntryStatus
+              etherStatsStatus                   INTEGER
           }
 
           etherStatsIndex OBJECT-TYPE
@@ -450,6 +411,7 @@
           -- start the first sample of the history at a time such that
           -- when the next hour of the day begins, a sample is
           -- started at that instant.  This tends to make more
+
           -- user-friendly reports, and enables comparison of reports
           -- from different probes that have relatively accurate time
           -- of day.
@@ -485,7 +447,7 @@
               historyControlBucketsGranted    INTEGER (1..65535),
               historyControlInterval          INTEGER (1..3600),
               historyControlOwner             OwnerString,
-              historyControlStatus            EntryStatus
+              historyControlStatus            INTEGER
           }
 
           historyControlIndex OBJECT-TYPE
@@ -882,6 +844,7 @@
           -- a delta sample twice per period, each time comparing the
           -- sum of the latest two samples to the threshold.  This
           -- allows the detection of threshold crossings
+
           -- that span the sampling boundary.  Note that this does not
           -- require any special configuration of the threshold value.
           -- It is suggested that probes implement this more precise
@@ -914,10 +877,10 @@
               alarmStartupAlarm             INTEGER,
               alarmRisingThreshold          INTEGER,
               alarmFallingThreshold         INTEGER,
-              alarmRisingEventIndex         INTEGER (0..65535),
-              alarmFallingEventIndex        INTEGER (0..65535),
+              alarmRisingEventIndex         INTEGER (1..65535),
+              alarmFallingEventIndex        INTEGER (1..65535),
               alarmOwner                    OwnerString,
-              alarmStatus                   EntryStatus
+              alarmStatus                   INTEGER
           }
 
           alarmIndex OBJECT-TYPE
@@ -1172,6 +1135,7 @@
           -- indexed using hostTimeCreationOrder rather than hostAddress.
           -- The hostTimeCreationOrder is an integer which reflects
           -- the relative order in which a particular entry was
+
           -- discovered and thus inserted into the table.  As this
           -- order, and thus index, is among those entries currently
           -- in the table, the index for a particular entry may change
@@ -1237,7 +1201,7 @@
               hostControlTableSize        INTEGER,
               hostControlLastDeleteTime   TimeTicks,
               hostControlOwner            OwnerString,
-              hostControlStatus           EntryStatus
+              hostControlStatus           INTEGER
           }
 
           hostControlIndex OBJECT-TYPE
@@ -1651,6 +1615,7 @@
           -- times of the sampling.  When the report is prepared,
           -- entries are created in the hostTopNTable associated with
           -- the relevant hostTopNControlEntry.  These entries are
+
           -- static for each report after it has been prepared.
 
           hostTopNControlTable OBJECT-TYPE
@@ -1682,7 +1647,7 @@
               hostTopNGrantedSize     INTEGER,
               hostTopNStartTime       TimeTicks,
               hostTopNOwner           OwnerString,
-              hostTopNStatus          EntryStatus
+              hostTopNStatus          INTEGER
           }
 
           hostTopNControlIndex OBJECT-TYPE
@@ -1959,7 +1924,7 @@
               matrixControlTableSize       INTEGER,
               matrixControlLastDeleteTime  TimeTicks,
               matrixControlOwner           OwnerString,
-              matrixControlStatus          EntryStatus
+              matrixControlStatus          INTEGER
           }
 
           matrixControlIndex OBJECT-TYPE
@@ -2223,6 +2188,7 @@
           -- The Filter Group
 
           -- Implementation of the Filter group is optional.
+
           --
           -- The Filter group allows packets to be captured with an
           -- arbitrary filter expression.  A logical data and
@@ -2270,7 +2236,7 @@
               filterPktStatusMask         INTEGER,
               filterPktStatusNotMask      INTEGER,
               filterOwner                 OwnerString,
-              filterStatus                EntryStatus
+              filterStatus                INTEGER
           }
 
           filterIndex OBJECT-TYPE
@@ -2555,7 +2521,7 @@
               channelMatches               Counter,
               channelDescription           DisplayString (SIZE (0..127)),
               channelOwner                 OwnerString,
-              channelStatus                EntryStatus
+              channelStatus                INTEGER
           }
 
           channelIndex OBJECT-TYPE
@@ -2800,7 +2766,7 @@
               bufferControlCapturedPackets      INTEGER,
               bufferControlTurnOnTime           TimeTicks,
               bufferControlOwner                OwnerString,
-              bufferControlStatus               EntryStatus
+              bufferControlStatus               INTEGER
           }
 
           bufferControlIndex OBJECT-TYPE
@@ -3184,6 +3150,7 @@
           -- be turned on or off by the firing of an event.
           --
           -- Each eventEntry may optionally specify that a log entry
+
           -- be created on its behalf whenever the event occurs.
           -- Each entry may also specify that notification should
           -- occur by way of SNMP trap messages.  In this case, the
@@ -3221,7 +3188,7 @@
               eventCommunity      OCTET STRING (SIZE (0..127)),
               eventLastTimeSent   TimeTicks,
               eventOwner          OwnerString,
-              eventStatus         EntryStatus
+              eventStatus         INTEGER
           }
 
           eventIndex OBJECT-TYPE
@@ -3384,31 +3351,5 @@
                   "An implementation dependent description of the
                   event that activated this log entry."
               ::= { logEntry 4 }
-
-          --  These definitions use the TRAP-TYPE macro as defined in [10]
-
-          --  Remote Network Monitoring Traps
-
-          risingAlarm TRAP-TYPE
-              ENTERPRISE rmon
-              VARIABLES { alarmIndex, alarmVariable, alarmSampleType,
-                          alarmValue, alarmRisingThreshold }
-              DESCRIPTION
-                  "The SNMP trap that is generated when an alarm
-                  entry crosses its rising threshold and generates
-                  an event that is configured for sending SNMP
-                  traps."
-              ::= 1
-
-          fallingAlarm TRAP-TYPE
-              ENTERPRISE rmon
-              VARIABLES { alarmIndex, alarmVariable, alarmSampleType,
-                          alarmValue, alarmFallingThreshold }
-              DESCRIPTION
-                  "The SNMP trap that is generated when an alarm
-                  entry crosses its falling threshold and generates
-                  an event that is configured for sending SNMP
-                  traps."
-              ::= 2
 
           END

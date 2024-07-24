@@ -226,6 +226,7 @@ EntitySensorValue ::= TEXTUAL-CONVENTION
             If the associated EntitySensorDataType object is equal to
             'truthvalue(12)', then an object of this type MUST contain
             either the value 'true(1)' or the value 'false(2)'.
+
             If the associated EntitySensorDataType object is equal to
             'other(1)' or unknown(2)', then an object of this type MUST
             contain a number ranging from -1000000000 to 1000000000."
@@ -272,7 +273,7 @@ entPhySensorEntry OBJECT-TYPE
     STATUS        current
     DESCRIPTION
             "Information about a particular physical sensor.
-
+ 
             An entry in this table describes the present reading of a
             sensor, the measurement units and scale, and sensor
             operational status.
@@ -412,7 +413,6 @@ entitySensorCompliance MODULE-COMPLIANCE
             Sensor MIB module."
     MODULE  -- this module
         MANDATORY-GROUPS { entitySensorValueGroup }
-
     MODULE ENTITY-MIB
         MANDATORY-GROUPS { entityPhysicalGroup }
 

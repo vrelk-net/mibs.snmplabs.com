@@ -61,6 +61,7 @@ entityMIB MODULE-IDENTITY
             "The MIB module for representing multiple logical
             entities supported by a single SNMP agent.
 
+            (c) Copyright 2017 Hewlett Packard Enterprise Development LP
             Copyright (c) 2013 IETF Trust and the persons identified
             as authors of the code.  All rights reserved.
 
@@ -1134,7 +1135,7 @@ entPhysicalContainsEntry OBJECT-TYPE
     ::= { entPhysicalContainsTable 1 }
 
 EntPhysicalContainsEntry ::= SEQUENCE {
-      entPhysicalChildIndex     PhysicalIndex
+      entPhysicalChildIndex     PhysicalIndex 
 }
 
 entPhysicalChildIndex OBJECT-TYPE
@@ -1145,7 +1146,7 @@ entPhysicalChildIndex OBJECT-TYPE
             "The value of entPhysicalIndex for the contained physical
             entity."
     ::= { entPhysicalContainsEntry 1 }
-
+    
 -- last change time stamp for the whole MIB
 entLastChangeTime OBJECT-TYPE
     SYNTAX      TimeStamp

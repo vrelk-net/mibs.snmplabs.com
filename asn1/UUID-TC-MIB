@@ -44,6 +44,7 @@ UUID-TC-MIB DEFINITIONS ::= BEGIN
                    representing Universally Unique IDentifiers
                    (UUIDs).
 
+                   (c) Copyright 2017 Hewlett Packard Enterprise Development LP
                    Copyright (c) 2013 IETF Trust and the persons
                    identified as authors of the code.  All rights
                    reserved.

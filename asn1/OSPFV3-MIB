@@ -43,6 +43,7 @@ OSPFV3-MIB DEFINITIONS ::= BEGIN
              DESCRIPTION
                 "The MIB module for OSPF version 3.
 
+                 (c) Copyright 2017 Hewlett Packard Enterprise Development LP
                  Copyright (c) 2009 IETF Trust and the persons
                  identified as authors of the code.  All rights
                  reserved.

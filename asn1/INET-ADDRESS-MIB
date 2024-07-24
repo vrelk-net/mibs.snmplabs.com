@@ -27,6 +27,7 @@ inetAddressMIB MODULE-IDENTITY
          autonomous system numbers, and the length of an
          Internet address prefix.
 
+         (c) Copyright 2017 Hewlett Packard Enterprise Development LP
          Copyright (C) The Internet Society (2005).  This version
          of this MIB module is part of RFC 4001, see the RFC
          itself for full legal notices."
@@ -44,8 +45,6 @@ inetAddressMIB MODULE-IDENTITY
          InetAutonomousSystemNumber, InetAddressIPv4z,
          and InetAddressIPv6z."
     REVISION     "200006080000Z"
-
-
     DESCRIPTION
         "Initial version, published as RFC 2851."
     ::= { mib-2 76 }
@@ -338,7 +337,6 @@ InetScopeType ::= TEXTUAL-CONVENTION
     REFERENCE   "RFC 3513"
     SYNTAX       INTEGER {
                      -- reserved(0),
-
                      interfaceLocal(1),
                      linkLocal(2),
                      subnetLocal(3),

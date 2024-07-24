@@ -80,8 +80,7 @@ ipspMIB MODULE-IDENTITY
     -- RFC-editor assigns xxxx
 
 -- XXX: To be assigned by IANA
-    ::= { mib-2 XXX }
-
+    ::= { mib-2 153 }
 --
 -- groups of related objects
 --

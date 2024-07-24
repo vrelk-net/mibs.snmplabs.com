@@ -1,15 +1,3 @@
--- ============================================================================
--- Copyright (C) 2007 by  HUAWEI TECHNOLOGIES. All rights reserved.
--- 
--- Description: PIM-STD-MIB.my , this Mib module for management of 
---              the Protocol Independent Multicast (PIM) protocols for PIM routers.
--- Reference:  
--- Version: V1.0
--- History:
---    created by wangyanwei 63315 2007-04-24
---    
--- ============================================================================
-
 PIM-STD-MIB DEFINITIONS ::= BEGIN
 
 IMPORTS
@@ -36,11 +24,11 @@ pimStdMIB MODULE-IDENTITY
     CONTACT-INFO
             "Email: pim@ietf.org
             WG charter:
-
             http://www.ietf.org/html.charters/pim-charter.html"
     DESCRIPTION
             "The MIB module for management of PIM routers.
 
+            (c) Copyright 2017 Hewlett Packard Enterprise Development LP
             Copyright (C) The IETF Trust (2007).  This version of this
             MIB module is part of RFC 5060; see the RFC itself for full
             legal notices."
@@ -229,6 +217,7 @@ pimInAsserts OBJECT-TYPE
             are multicast to all routers on a network.  This counter is
             incremented by all routers that receive an assert, not only
             those routers that are contesting the assert.
+
             Discontinuities in the value of this counter can occur at
             re-initialization of the management system, for example,
             when the device is rebooted."
@@ -277,6 +266,7 @@ pimLastAssertSourceAddressType OBJECT-TYPE
             (*,G), or if this router has not sent or received an assert,
             then this object is set to unknown(0)."
     ::= { pim 27 }
+
 pimLastAssertSourceAddress OBJECT-TYPE
     SYNTAX     InetAddress (SIZE (0|4|8|16|20))
     MAX-ACCESS read-only
@@ -421,6 +411,7 @@ pimInvalidRegisterRp OBJECT-TYPE
             "The RP address to which the last invalid Register message
             received by this device was delivered."
     ::= { pim 36 }
+
 pimInvalidJoinPruneNotificationPeriod OBJECT-TYPE
     SYNTAX     Unsigned32 (10..65535)
     UNITS      "seconds"
@@ -469,6 +460,7 @@ pimInvalidJoinPruneMsgsRcvd OBJECT-TYPE
             mapping, then the object pimGroupMappingPimMode is absent.
             The RP address contained in the invalid Join/Prune is
             pimInvalidJoinPruneRp.
+
             Invalid Join/Prune messages are discarded.  This may result
             in loss of multicast data affecting listeners downstream of
             pimInvalidJoinPruneOrigin, for multicast data addressed to
@@ -805,6 +797,7 @@ pimInterfaceTrigHelloInterval OBJECT-TYPE
     REFERENCE "RFC 4601 section 4.11"
     DEFVAL { 5 }
     ::= { pimInterfaceEntry 10 }
+
 pimInterfaceHelloHoldtime OBJECT-TYPE
     SYNTAX     Unsigned32 (0..65535)
     UNITS      "seconds"
@@ -997,6 +990,7 @@ pimInterfaceStubInterface OBJECT-TYPE
     REFERENCE "RFC 3376, RFC 3810"
     DEFVAL { false }
     ::= { pimInterfaceEntry 23 }
+
 pimInterfacePruneLimitInterval OBJECT-TYPE
     SYNTAX     Unsigned32 (0..65535)
     UNITS      "seconds"
@@ -1047,7 +1041,7 @@ pimInterfaceStatus OBJECT-TYPE
             This status object can be set to active(1) without setting
             any other columnar objects in this entry.
 
-            All writable objects in this entry can be modified when the
+            All writeable objects in this entry can be modified when the
             status of this entry is active(1)."
     ::= { pimInterfaceEntry 27 }
 
@@ -2725,6 +2719,7 @@ pimStaticRPGrpPrefixLength OBJECT-TYPE
             entry.  The InetAddressType is given by the
             pimStaticRPAddressType object.  If pimStaticRPAddressType is
             'ipv4' or 'ipv4z', this object must be in the range 4..32.
+
             If pimStaticRPGrpAddressType is 'ipv6' or 'ipv6z', this
             object must be in the range 8..128."
     ::= { pimStaticRPEntry 3 }
@@ -2807,7 +2802,7 @@ pimStaticRPRowStatus OBJECT-TYPE
             This status object cannot be set to active(1) before a valid
             value has been written to pimStaticRPRPAddress.
 
-            All writable objects in this entry can be modified when the
+            All writeable objects in this entry can be modified when the
             status of this entry is active(1)."
     ::= { pimStaticRPEntry 8 }
 
@@ -2821,6 +2816,7 @@ pimStaticRPStorageType OBJECT-TYPE
             objects in the row."
     DEFVAL { nonVolatile }
     ::= { pimStaticRPEntry 9 }
+
 --
 -- The PIM Anycast-RP Set Table
 --
@@ -2928,7 +2924,7 @@ pimAnycastRPSetRowStatus OBJECT-TYPE
             This status object can be set to active(1) without setting
             any other columnar objects in this entry.
 
-            All writable objects in this entry can be modified when the
+            All writeable objects in this entry can be modified when the
             status of this entry is active(1)."
     ::= { pimAnycastRPSetEntry 5 }
 
@@ -3061,6 +3057,7 @@ pimGroupMappingOrigin OBJECT-TYPE
     DESCRIPTION
             "The mechanism by which this group mapping was learned."
     ::= { pimGroupMappingEntry 1 }
+
 pimGroupMappingAddressType OBJECT-TYPE
     SYNTAX     InetAddressType
     MAX-ACCESS not-accessible
@@ -3497,7 +3494,7 @@ pimTuningParametersGroup OBJECT-GROUP
             }
     STATUS  current
     DESCRIPTION
-            "A collection of writable objects used to configure PIM
+            "A collection of writeable objects used to configure PIM
             behavior and to tune performance."
     ::= { pimMIBGroups 3 }
 
@@ -3735,3 +3732,5 @@ pimDeviceStorageGroup OBJECT-GROUP
     ::= { pimMIBGroups 15 }
 
 END
+
+

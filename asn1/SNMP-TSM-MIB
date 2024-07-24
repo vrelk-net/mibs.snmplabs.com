@@ -67,6 +67,7 @@ snmpTsmMIB MODULE-IDENTITY
         along the standards track on different time-lines from other
         modules.
 
+        (c) Copyright 2017 Hewlett Packard Enterprise Development LP
         Copyright (c) 2009 IETF Trust and the persons
         identified as authors of the code.  All rights reserved.
 

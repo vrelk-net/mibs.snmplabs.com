@@ -44,11 +44,13 @@ snmpFrameworkMIB MODULE-IDENTITY
                   postal:     Schagen 33
                               3461 GL Linschoten
                               Netherlands
+
                   EMail:      bwijnen@lucent.com
                   phone:      +31 348-680-485
                     "
        DESCRIPTION  "The SNMP Management Architecture MIB
 
+                     (c) Copyright 2017 Hewlett Packard Enterprise Development LP
                      Copyright (C) The Internet Society (2002). This
                      version of this MIB module is part of RFC 3411;
                      see the RFC itself for full legal notices.
@@ -185,7 +187,6 @@ SnmpEngineID ::= TEXTUAL-CONVENTION
                 "
     SYNTAX       OCTET STRING (SIZE(5..32))
 
-
 SnmpSecurityModel ::= TEXTUAL-CONVENTION
     STATUS       current
     DESCRIPTION "An identifier that uniquely identifies a
@@ -234,6 +235,7 @@ SnmpSecurityModel ::= TEXTUAL-CONVENTION
                  Note that the most significant bit must be zero;
                  hence, there are 23 bits allocated for various
                  organizations to design and define non-standard
+
                  securityModels.  This limits the ability to
                  define new proprietary implementations of Security
                  Models to the first 8,388,608 enterprises.
@@ -281,6 +283,7 @@ SnmpMessageProcessingModel ::= TEXTUAL-CONVENTION
 
                    For example, the fourth Message Processing Model
                    defined by the enterprise whose enterpriseID
+
                    is 1 would be 259.
 
                  This scheme for allocating messageProcessingModel
@@ -502,7 +505,6 @@ snmpFrameworkMIBCompliance MODULE-COMPLIANCE
                 "
     MODULE    -- this module
         MANDATORY-GROUPS { snmpEngineGroup }
-
     ::= { snmpFrameworkMIBCompliances 1 }
 
 -- units of conformance
@@ -517,6 +519,7 @@ snmpEngineGroup OBJECT-GROUP
     STATUS       current
     DESCRIPTION "A collection of objects for identifying and
                  determining the configuration and current timeliness
+
                  values of an SNMP engine.
                 "
     ::= { snmpFrameworkMIBGroups 1 }

@@ -22,8 +22,8 @@ EXPORTS -- EVERYTHING
 
  -- definition of object types
 
- OBJECT-TYPE MACRO ::=
- BEGIN
+OBJECT-TYPE MACRO ::=
+BEGIN
      TYPE NOTATION ::= "SYNTAX" type (TYPE ObjectSyntax)
                        "ACCESS" Access
                        "STATUS" Status
@@ -36,7 +36,7 @@ EXPORTS -- EVERYTHING
      Status ::= "mandatory"
                      | "optional"
                      | "obsolete"
- END
+END
 
     -- names of objects in the MIB
 

@@ -36,6 +36,7 @@ VRRPV3-MIB DEFINITIONS ::= BEGIN
                "This MIB describes objects used for managing Virtual
                 Router Redundancy Protocol version 3 (VRRPv3).
 
+                (c) Copyright 2017 Hewlett Packard Enterprise Development LP
                 Copyright (c) 2012 IETF Trust and the persons
                 identified as authors of the code.  All rights
                 reserved.
@@ -109,7 +110,7 @@ VRRPV3-MIB DEFINITIONS ::= BEGIN
 
                A row must be created with vrrpv3OperationsStatus
                set to initialize(1) and cannot transition to
-               backup(2) or master(3) until vrrpv3OperationsRowStatus 
+               backup(2) or master(3) until vrrpv3OperationsRowStatus
                is transitioned to active(1).
 
                The information in this table is persistent and when
@@ -397,12 +398,12 @@ VRRPV3-MIB DEFINITIONS ::= BEGIN
                the number of IP addresses associated (e.g., backed up)
                by the virtual router (equivalent to
                'vrrpv3OperationsIpAddrCount').
- 
+
                Rows in the table cannot be modified unless the value
                of 'vrrpv3OperationsStatus' for the corresponding entry
                in the vrrpv3OperationsTable has transitioned to
                initialize(1).
- 
+
                The information in this table is persistent and when
                written the entity SHOULD save the change to non-
                volatile storage."
@@ -450,7 +451,7 @@ VRRPV3-MIB DEFINITIONS ::= BEGIN
                Destroying the entry or setting it to destroy(6)
                removes the associated address from the virtual router.
                The use of other values is implementation-dependent.
-  
+
                Implementations should not allow deletion of the last
                row corresponding to an active row in
                vrrpv3OperationsTable.
@@ -520,7 +521,7 @@ VRRPV3-MIB DEFINITIONS ::= BEGIN
               which one of vrrpv3RouterChecksumErrors,
               vrrpv3RouterVersionErrors, and vrrpv3RouterVrIdErrors
               suffered a discontinuity.
- 
+
               If no such discontinuities have occurred since the last
               re-initialization of the local management subsystem,
               then this object contains a zero value."
@@ -831,7 +832,7 @@ VRRPV3-MIB DEFINITIONS ::= BEGIN
                an implementation can claim read-only compliance.
                Such a device can then be monitored, but cannot be
                configured with this MIB."
- 
+
            MODULE -- this module
            MANDATORY-GROUPS  {
                vrrpv3OperationsGroup,

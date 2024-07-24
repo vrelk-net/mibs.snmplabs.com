@@ -60,6 +60,7 @@ EtherLike-MIB DEFINITIONS ::= BEGIN
                     Of particular interest is Clause 30, '10 Mb/s,
                     100 Mb/s, 1000 Mb/s, and 10 Gb/s Management'.
 
+                    (c) Copyright 2017 Hewlett Packard Enterprise Development LP
                     Copyright (C) The Internet Society (2003).  This
                     version of this MIB module is part of RFC 3635;
                     see the RFC itself for full legal notices."

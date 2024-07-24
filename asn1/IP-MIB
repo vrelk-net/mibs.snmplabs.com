@@ -1,12 +1,3 @@
-                                                                 -- Network Working Group                                   S. Routhier, Ed.
--- Request for Comments: 4293                                    April 2006
--- Obsoletes: 2011, 2465, 2466
--- Category: Standards Track
-
-
---                       Management Information Base
---                      for the Internet Protocol (IP)
-
 IP-MIB DEFINITIONS ::= BEGIN
 
 IMPORTS
@@ -40,6 +31,7 @@ ipMIB MODULE-IDENTITY
            "The MIB module for managing IP and ICMP implementations, but
             excluding their management of IP routes.
 
+            (c) Copyright 2017 Hewlett Packard Enterprise Development LP
             Copyright (C) The Internet Society (2006).  This version of
             this MIB module is part of RFC 4293; see the RFC itself for
             full legal notices."
@@ -78,6 +70,7 @@ IpAddressOriginTC ::= TEXTUAL-CONVENTION
             system by a DHCP server.
 
             linklayer(5) indicates an address created by IPv6 stateless
+
             auto-configuration.
 
             random(6) indicates an address chosen by the system at
@@ -126,6 +119,7 @@ IpAddressStatusTC ::= TEXTUAL-CONVENTION
 
             The duplicate(7) state indicates the address has been
             determined to be non-unique on the link and so must not be
+
             used.
 
             The optimistic(8) state indicates the address is available
@@ -222,6 +216,7 @@ ipDefaultTTL OBJECT-TYPE
            "The default value inserted into the Time-To-Live field of
             the IPv4 header of datagrams originated at this entity,
             whenever a TTL value is not supplied by the transport layer
+
             protocol.
 
             When this object is written, the entity should save the
@@ -558,6 +553,7 @@ ipv6InterfaceForwarding OBJECT-TYPE
 -- dynamic interface creation/deletion.
 --
 -- Note well: Both of these tables contain some items that are
+
 -- represented by two objects, representing the value in either 32
 -- or 64 bits.  For those objects, the 32-bit value MUST be the low
 -- order 32 bits of the 64-bit value.  Also note that the 32-bit
@@ -702,6 +698,7 @@ ipSystemStatsHCInOctets OBJECT-TYPE
            "The total number of octets received in input IP datagrams,
             including those received in error.  This object counts the
             same octets as ipSystemStatsInOctets, but allows for larger
+
             values.
 
             Discontinuities in the value of this counter can occur at
@@ -750,6 +747,7 @@ ipSystemStatsInAddrErrors OBJECT-TYPE
             valid address to be received at this entity.  This count
             includes invalid addresses (e.g., ::0).  For entities
             that are not IP routers and therefore do not forward
+
             datagrams, this counter includes datagrams discarded
             because the destination address was not a local address.
 
@@ -846,6 +844,7 @@ ipSystemStatsReasmReqds OBJECT-TYPE
             input interface for some of the fragments.
 
             Discontinuities in the value of this counter can occur at
+
             re-initialization of the management system, and at other
             times as indicated by the value of
             ipSystemStatsDiscontinuityTime."
@@ -1039,6 +1038,7 @@ ipSystemStatsOutDiscards OBJECT-TYPE
             encountered to prevent their transmission to their
             destination, but were discarded (e.g., for lack of
             buffer space).  Note that this counter would include
+
             datagrams counted in ipSystemStatsOutForwDatagrams if any
             such datagrams met this (discretionary) discard criterion.
 
@@ -1135,6 +1135,7 @@ ipSystemStatsOutTransmits OBJECT-TYPE
 
             Discontinuities in the value of this counter can occur at
             re-initialization of the management system, and at other
+
             times as indicated by the value of
             ipSystemStatsDiscontinuityTime."
     ::= { ipSystemStatsEntry 30 }
@@ -1183,6 +1184,7 @@ ipSystemStatsHCOutOctets OBJECT-TYPE
             Discontinuities in the value of this counter can occur at
             re-initialization of the management system, and at other
             times as indicated by the value of
+
             ipSystemStatsDiscontinuityTime."
     ::= { ipSystemStatsEntry 33 }
 
@@ -1279,6 +1281,7 @@ ipSystemStatsOutMcastOctets OBJECT-TYPE
     DESCRIPTION
            "The total number of octets transmitted in IP multicast
             datagrams.  Octets from datagrams counted in
+
             ipSystemStatsOutMcastPkts MUST be counted here.
 
             Discontinuities in the value of this counter can occur at
@@ -1327,6 +1330,7 @@ ipSystemStatsHCInBcastPkts OBJECT-TYPE
             Discontinuities in the value of this counter can occur at
             re-initialization of the management system, and at other
             times as indicated by the value of
+
             ipSystemStatsDiscontinuityTime."
     ::= { ipSystemStatsEntry 43 }
 
@@ -1615,6 +1619,7 @@ ipIfStatsInUnknownProtos OBJECT-TYPE
             Discontinuities in the value of this counter can occur at
             re-initialization of the management system, and at other
             times as indicated by the value of
+
             ipIfStatsDiscontinuityTime."
     ::= { ipIfStatsEntry 10 }
 
@@ -1663,6 +1668,7 @@ ipIfStatsHCInForwDatagrams OBJECT-TYPE
             their final IP destination and for which this entity
             attempted to find a route to forward them to that final
             destination.  This object counts the same packets as
+
             ipIfStatsInForwDatagrams, but allows for larger values.
 
             Discontinuities in the value of this counter can occur at
@@ -1759,6 +1765,7 @@ ipIfStatsInDelivers OBJECT-TYPE
             When tracking interface statistics, the counter of the
             interface to which these datagrams were addressed is
             incremented.  This interface might not be the same as the
+
             input interface for some of the datagrams.
 
             Discontinuities in the value of this counter can occur at
@@ -1807,6 +1814,7 @@ ipIfStatsHCOutRequests OBJECT-TYPE
            "The total number of IP datagrams that local IP user-
             protocols (including ICMP) supplied to IP in requests for
             transmission.  This object counts the same packets as
+
             ipIfStatsOutRequests, but allows for larger values.
 
             Discontinuities in the value of this counter can occur at
@@ -1855,6 +1863,7 @@ ipIfStatsHCOutForwDatagrams OBJECT-TYPE
             Discontinuities in the value of this counter can occur at
             re-initialization of the management system, and at other
             times as indicated by the value of
+
             ipIfStatsDiscontinuityTime."
     ::= { ipIfStatsEntry 24 }
 
@@ -1903,6 +1912,7 @@ ipIfStatsOutFragOKs OBJECT-TYPE
             fragmented.
 
             When tracking interface statistics, the counter of the
+
             outgoing interface is incremented for a successfully
             fragmented datagram.
 
@@ -2047,6 +2057,7 @@ ipIfStatsInMcastOctets OBJECT-TYPE
     STATUS     current
     DESCRIPTION
            "The total number of octets received in IP multicast
+
             datagrams.  Octets from datagrams counted in
             ipIfStatsInMcastPkts MUST be counted here.
 
@@ -2095,6 +2106,7 @@ ipIfStatsHCOutMcastPkts OBJECT-TYPE
 
             Discontinuities in the value of this counter can occur at
             re-initialization of the management system, and at other
+
             times as indicated by the value of
             ipIfStatsDiscontinuityTime."
     ::= { ipIfStatsEntry 39 }
@@ -2191,6 +2203,7 @@ ipIfStatsDiscontinuityTime OBJECT-TYPE
     STATUS     current
     DESCRIPTION
            "The value of sysUpTime on the most recent occasion at which
+
             any one or more of this entry's counters suffered a
             discontinuity.
 
@@ -2239,6 +2252,7 @@ ipAddressPrefixTable OBJECT-TYPE
             All prefixes used by this entity should be included in this
             table independent of how the entity learned the prefix.
             (This table isn't limited to prefixes learned from router
+
             advertisements.)"
     ::= { ip 32 }
 
@@ -2431,6 +2445,7 @@ ipAddressTable OBJECT-TYPE
             several objects, such as ipAddressOrigin, are not.  The
             intention in allowing a user to write to this table is to
             allow them to add or remove any entry that isn't
+
             permanent.  The user should be allowed to modify objects
             and entries when that would not cause inconsistencies
             within the table.  Allowing write access to objects, such
@@ -2479,6 +2494,7 @@ ipAddressAddr OBJECT-TYPE
     STATUS     current
     DESCRIPTION
            "The IP address to which this entry's addressing information
+
             pertains.  The address type of this object is specified in
             ipAddressAddrType.
 
@@ -2575,6 +2591,7 @@ ipAddressRowStatus OBJECT-TYPE
 
             The RowStatus TC requires that this DESCRIPTION clause
             states under which circumstances other objects in this row
+
             can be modified.  The value of this object has no effect on
             whether other objects in this conceptual row can be
             modified.
@@ -2671,6 +2688,7 @@ ipNetToPhysicalNetAddress OBJECT-TYPE
             specified in ipNetToPhysicalAddressType.
 
             Implementors need to be aware that if the size of
+
             ipNetToPhysicalNetAddress exceeds 115 octets, then OIDS of
             instances of columns in this row will have more than 128
             sub-identifiers and cannot be accessed using SNMPv1,
@@ -2719,6 +2737,7 @@ ipNetToPhysicalType OBJECT-TYPE
             associates the interface identified with said entry from the
             mapping identified with said entry.  It is an
             implementation-specific matter as to whether the agent
+
             removes an invalidated entry from the table.  Accordingly,
             management stations must be prepared to receive tabular
             information from agents that corresponds to entries not
@@ -2959,6 +2978,7 @@ ipDefaultRouterTable OBJECT-TYPE
     STATUS     current
     DESCRIPTION
            "The table used to describe the default routers known to this
+
             entity."
     ::= { ip 37 }
 
@@ -3152,6 +3172,7 @@ ipv6RouterAdvertMaxInterval OBJECT-TYPE
     STATUS     current
     DESCRIPTION
            "The maximum time allowed between sending unsolicited router
+
             advertisements from this interface."
     REFERENCE "RFC 2461 Section 6.2.1"
     DEFVAL { 600 }
@@ -3297,6 +3318,7 @@ ipv6RouterAdvertRowStatus OBJECT-TYPE
     ::= { ipv6RouterAdvertEntry 12 }
 
 --
+
 -- ICMP section
 --
 
@@ -3393,6 +3415,7 @@ icmpStatsOutErrors OBJECT-TYPE
 
 --
 -- per-version, per-message type ICMP counters
+
 --
 
 icmpMsgStatsTable OBJECT-TYPE
@@ -3537,6 +3560,7 @@ ipMIBCompliance2 MODULE-COMPLIANCE
             -- SYNTAX        InetAddress (Size(4 | 8 | 16 | 20))
             -- DESCRIPTION
             --     This MIB requires support for only global and
+
             --     non-global IPv4 and IPv6 addresses and so the size
             --     can be 4, 8, 16, or 20 bytes.
             --
@@ -3585,6 +3609,7 @@ ipMIBCompliance2 MODULE-COMPLIANCE
     DESCRIPTION
            "This group is mandatory for systems that have an aggregate
             bandwidth of greater than 650MB.  Including this group
+
             does not allow an entity to neglect the 32 bit versions of
             these objects."
 
@@ -3633,6 +3658,7 @@ ipMIBCompliance2 MODULE-COMPLIANCE
     GROUP ipv4IfStatsHCPacketGroup
     DESCRIPTION
            "This group is mandatory for all systems supporting IPv4 and
+
             including the ipIfStatsHCPacketGroup.  Including this group
             does not allow an entity to neglect the 32 bit versions of
             these objects."
@@ -3819,7 +3845,6 @@ ipMIBCompliance2 MODULE-COMPLIANCE
     DESCRIPTION
            "An agent is not required to provide write or create access
             to this object."
-
     ::= { ipMIBCompliances 2 }
 
 -- units of conformance
@@ -4115,6 +4140,7 @@ ipInReceives OBJECT-TYPE
             interfaces, including those received in error.
 
             This object has been deprecated, as a new IP version-neutral
+
             table has been added.  It is loosely replaced by
             ipSystemStatsInRecieves."
     ::= { ip 3 }
@@ -4163,6 +4189,7 @@ ipForwDatagrams OBJECT-TYPE
             attempt was made to find a route to forward them to that
             final destination.  In entities which do not act as IPv4
             routers, this counter will include only those packets which
+
             were Source-Routed via this entity, and the Source-Route
             option processing was successful.
 
@@ -4211,6 +4238,7 @@ ipInDelivers OBJECT-TYPE
 
             This object has been deprecated as a new IP version neutral
             table has been added.  It is loosely replaced by
+
             ipSystemStatsIndelivers."
     ::= { ip 9 }
 
@@ -4259,6 +4287,7 @@ ipOutNoRoutes OBJECT-TYPE
             because all of its default routers are down.
 
             This object has been deprecated, as a new IP version-neutral
+
             table has been added.  It is loosely replaced by
             ipSystemStatsOutNoRoutes."
     ::= { ip 12 }
@@ -4501,6 +4530,7 @@ ipNetToMediaIfIndex OBJECT-TYPE
            "The interface on which this entry's equivalence is
             effective.  The interface identified by a particular value
             of this index is the same interface as identified by the
+
             same value of the IF-MIB's ifIndex.
 
             This object predates the rule limiting index objects to a
@@ -4549,6 +4579,7 @@ ipNetToMediaType OBJECT-TYPE
            "The type of mapping.
 
             Setting this object to the value invalid(2) has the effect
+
             of invalidating the corresponding entry in the
             ipNetToMediaTable.  That is, it effectively dis-associates
             the interface identified with said entry from the mapping
